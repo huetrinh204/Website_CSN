@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<filters>
+	<!--Type dyncamic means that several filters can be produced
+	Single means a single filter-->
+	<filter name="fields" dynamic="true">
+		<!--Define the filter properties -->
+		<definition dbTable="#__fields">
+			<!--The id of the filter (should be unique) -->
+			<id dbColumn="id"/>
+			<!--The title of the filter (should be unique) -->
+			<title dbColumn="title"/>
+
+			<!--The context/component to which the filter refers -->
+			<context dbColumn="context"/>
+		</definition>
+
+		<!--The table that holds the values -->
+		<valueTable dbTable="#__fields_values">
+			<value dbColumn="value" type="string"/>
+			<!--The actual label that will be displayed in the front-end -->
+			<label dbColumn="value" translate="true"/>
+			<!--Reference the field to which a value belongs -->
+			<fieldId dbColumn="field_id" reference="#__fields.id"/>
+		</valueTable>
+
+		<!--The table that holds the item>value referrence -->
+		<valueRefItemTable dbTable="#__fields_values">
+			<!--Reference the context primamy key to which a value is assigned -->
+			<itemId dbColumn="item_id" reference="#__fields.{context[primaryKey]}"/>
+			<!--The assigned value/value_id (if there is a separate table for the values)-->
+			<valueId dbColumn="value"/>
+		</valueRefItemTable>
+	</filter>
+
+	<filter name="category">
+
+	</filter>
+
+</filters>

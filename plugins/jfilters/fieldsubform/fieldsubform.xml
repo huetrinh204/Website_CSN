@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" group="jfilters" method="upgrade">
+    <name>plg_jfilters_fieldsubform</name>
+    <author>Blue-Coder.com</author>
+    <creationDate>2024-04-05</creationDate>
+    <copyright>Copyright (C) 2024 Blue-Coder.com. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <authorUrl>https://Blue-Coder.com</authorUrl>
+    <version>1.0.3</version>
+    <description>PLG_JFILTERS_FIELDSUBFORM_XML_DESCRIPTION</description>
+    <files>
+        <filename plugin="fieldsubform">fieldsubform.php</filename>
+    </files>
+    <languages folder="language">
+        <language tag="en-GB">en-GB/plg_jfilters_fieldsubform.sys.ini</language>
+    </languages>
+</extension>

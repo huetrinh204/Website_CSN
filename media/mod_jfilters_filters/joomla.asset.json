@@ -1,0 +1,103 @@
+{
+  "$schema": "https://developer.joomla.org/schemas/json-schema/web_assets.json",
+  "name": "jfilters_filters",
+  "version": "1.0.0",
+  "description": "JFilters Filters is a module used to load the filters in the front-end",
+  "license": "GPL-2.0-or-later",
+  "assets": [
+    {
+      "name": "mod_jfilters_filters",
+      "type": "style",
+      "uri": "mod_jfilters_filters/filters.min.css"
+    },
+    {
+      "name": "mod_jfilters_filters",
+      "type": "script",
+      "uri": "mod_jfilters_filters/filters.min.js",
+      "dependencies": [
+        "core"
+      ],
+      "attributes": {
+        "defer": true
+      }
+    },
+    {
+      "name": "mod_jfilters_filters",
+      "type": "preset",
+      "dependencies": [
+        "mod_jfilters_filters#style",
+        "mod_jfilters_filters#script"
+      ]
+    },
+    {
+      "name": "mod_jfilters_tooltip",
+      "type": "script",
+      "uri": "mod_jfilters_filters/tooltip.min.js",
+      "attributes": {
+        "defer": true
+      }
+    },
+    {
+      "name": "flatpickr",
+      "type": "script",
+      "uri": "mod_jfilters_filters/flatpickr.min.js",
+      "attributes": {
+        "defer": true
+      }
+    },
+    {
+      "name": "flatpickr",
+      "type": "style",
+      "uri": "mod_jfilters_filters/flatpickr.min.css"
+    },
+    {
+      "name": "mod_jfilters_calendar",
+      "type": "script",
+      "uri": "mod_jfilters_filters/calendar.min.js",
+      "dependencies": [
+        "flatpickr",
+        "mod_jfilters_filters"
+      ],
+      "attributes": {
+        "defer": true
+      }
+    },
+    {
+      "name": "range_inputs",
+      "type": "script",
+      "uri": "mod_jfilters_filters/range_inputs.min.js",
+      "dependencies": [
+        "mod_jfilters_filters"
+      ],
+      "attributes": {
+        "defer": true
+      }
+    },
+    {
+      "name": "mod_jfilters_range_sliders",
+      "type": "style",
+      "uri": "mod_jfilters_filters/range_sliders.min.css"
+    },
+    {
+      "name": "mod_jfilters_range_sliders",
+      "type": "script",
+      "uri": "mod_jfilters_filters/range_sliders.min.js",
+      "dependencies": [
+        "mod_jfilters_filters",
+        "range_inputs"
+      ],
+      "attributes": {
+        "defer": true
+      }
+    },
+    {
+      "name": "mod_jfilters_range_sliders",
+      "type": "preset",
+      "dependencies": [
+        "mod_jfilters_tooltip#script",
+        "mod_jfilters_range_sliders#style",
+        "mod_jfilters_range_sliders#script"
+      ]
+    }
+  ]
+}

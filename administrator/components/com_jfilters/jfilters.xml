@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" method="upgrade">
+	<name>com_jfilters</name>
+	<author>Blue-Coder.com</author>
+	<creationDate>2024-12-05</creationDate>
+	<copyright>(C) 2021 Blue-Coder.com. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>info@blue-coder.com</authorEmail>
+	<authorUrl>blue-coder.com</authorUrl>
+	<version>1.17.0</version>
+	<description>COM_JFILTERS_XML_DESCRIPTION</description>
+	<namespace path="src">Bluecoder\Component\Jfilters</namespace>
+
+	<install>
+		<sql>
+			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+		</sql>
+	</install>
+
+	<uninstall>
+	<sql>
+		<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+	</sql>
+	</uninstall>
+
+	<!-- Runs on update; -->
+	<update>
+		<schemas>
+			<schemapath type="mysql">sql/updates/mysql</schemapath>
+		</schemas>
+	</update>
+
+	<files folder="site">
+		<folder>src</folder>
+		<folder>tmpl</folder>
+	</files>
+
+	<!-- Language files -->
+	<languages folder="site/language">
+		<language tag="en-GB">en-GB/com_jfilters.ini</language>
+	</languages>
+
+	<media destination="com_jfilters" folder="administrator/media">
+		<folder>css</folder>
+		<folder>images</folder>
+		<folder>js</folder>
+		<filename>joomla.asset.json</filename>
+	</media>
+
+	<administration>
+		<menu img="../media/com_jfilters/images/jfilters_logo_16.svg" link="option=com_jfilters&amp;view=filters" alt="JFilters/Filters">com_jfilters</menu>
+		<files folder="administrator">
+			<folder>config_presets</folder>
+			<folder>forms</folder>
+			<folder>services</folder>
+			<folder>sql</folder>
+			<folder>src</folder>
+			<folder>tmpl</folder>
+			<filename>.htaccess</filename>
+			<filename>access.xml</filename>
+			<filename>config.xml</filename>
+			<filename>env.php</filename>
+			<filename>LICENSE.txt</filename>
+			<filename>phpunit.xml</filename>
+			<filename>README.md</filename>
+			<filename>web.config</filename>
+		</files>
+
+		<!-- Language files -->
+		<languages folder="administrator/language">
+			<language tag="en-GB">en-GB/com_jfilters.ini</language>
+			<language tag="en-GB">en-GB/com_jfilters.sys.ini</language>
+		</languages>
+	</administration>
+</extension>
+
+

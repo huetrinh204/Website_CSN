@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright © Blue-coder.com, All rights reserved.
+
+Configuration for the generation of the dynamic filters.
+The file defines if a filter will be generated from a dynamic type (e.g. fields) and it's configuration.
+Filters not mentioned here, but will be encountered in the runtime (e.g. fields: checkboxes, radio), will be generated and get the default properties.
+
+Additionally, this is the optimal place to add configuration for 3rd party field plugins.
+-->
+
+<filters>
+    <!--
+    configName : The filter name property as appeared in the filters.xml
+    name : The type of the dynamic filter as loaded in Bluecoder\Component\Jfilters\Administrator\Model\Filter\DynamicFilterInterface::getType()
+    generateFilter : If a filter will be generated for that element
+    -->
+    <filter configName="fields" name="calendar" type="date" generateFilter="true"/>
+
+    <filter configName="fields" name="integer" type="int" generateFilter="true">
+        <!--
+       Set the allowed display types for that filter.
+       A display is a layout file name (can be found in the module's tmpl or in the module's template overrides).
+       If missed, the default displays will be used.-->
+        <!-- Commented as it is now defined in the filter.xml, using the filter's data type. But can still be used (e.g. in field plugins)
+        <displays>
+            <display>links</display>
+            <display multiselect="true">checkboxes</display>
+            <display edition="100" >list</display>
+            <display edition="100" >radios</display>
+            <display edition="100" >buttons_single</display>
+            <display edition="100" multiselect="true">buttons_multi</display>
+            <display edition="100" range="true">range_inputs</display>
+        </displays>
+        -->
+
+    </filter>
+
+    <filter configName="fields" name="checkboxes" generateFilter="true">
+        <!--
+        Set additional sorting options for that filter.
+        -->
+        <additionalSortFields>
+            <additionalSortField edition="100" label="COM_JFILTERS_FIELD_ORDERING">ordering</additionalSortField>
+        </additionalSortFields>
+    </filter>
+
+    <filter configName="fields" name="list" generateFilter="true">
+        <additionalSortFields>
+            <additionalSortField edition="100" label="COM_JFILTERS_FIELD_ORDERING">ordering</additionalSortField>
+        </additionalSortFields>
+    </filter>
+
+    <filter configName="fields" name="radio" generateFilter="true">
+        <additionalSortFields>
+            <additionalSortField edition="100" label="COM_JFILTERS_FIELD_ORDERING">ordering</additionalSortField>
+        </additionalSortFields>
+    </filter>
+
+    <filter configName="fields" name="color" type="color" generateFilter="false">
+        <displays>
+            <display>links</display>
+            <display edition="100">color_button</display>
+            <display edition="100" multiselect="true">color_button_multi</display>
+        </displays>
+    </filter>
+
+    <filter configName="fields" name="editor" generateFilter="false"/>
+
+    <filter configName="fields" name="imagelist" generateFilter="false">
+        <displays>
+            <display>image</display>
+            <display multiselect="true">image_multi</display>
+        </displays>
+    </filter>
+
+    <filter configName="fields" name="media" generateFilter="false"/>
+
+    <filter configName="fields" name="sql" generateFilter="false"/>
+
+    <filter configName="fields" name="text" generateFilter="true"/>
+
+    <filter configName="fields" name="textarea" generateFilter="false"/>
+
+    <filter configName="fields" name="url" generateFilter="false"/>
+
+    <!-- see https://regularlabs.com/forum/articlesfield/51524-jfilter-with-articleslinked-field#112960 -->
+    <filter configName="fields" name="articleslinked" generateFilter="false"/>
+
+    <filter configName="fields" name="user" generateFilter="false">
+        <displays>
+            <display>user_links</display>
+            <display multiselect="true">user_checkboxes</display>
+        </displays>
+    </filter>
+
+    <filter configName="fields" name="usergrouplist" generateFilter="false">
+        <displays>
+            <display>usergroup_links</display>
+            <display multiselect="true">usergroup_checkboxes</display>
+        </displays>
+    </filter>
+
+</filters>

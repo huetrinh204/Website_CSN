@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form addfieldprefix="Bluecoder\Component\Jfilters\Administrator\Field">
+
+    <fieldset name="general">
+
+        <field
+                name="id"
+                type="number"
+                label="JGLOBAL_FIELD_ID_LABEL"
+                default="0"
+                class="readonly"
+                readonly="true"
+        />
+
+        <field
+                name="label"
+                type="text"
+                label="JGLOBAL_TITLE"
+                required="true"
+        />
+
+        <field
+                name="alias"
+                type="text"
+                label="JFIELD_ALIAS_LABEL"
+                size="45"
+                hint="JFIELD_ALIAS_PLACEHOLDER"
+        />
+
+        <field
+                name="root"
+                type="radio"
+                class="root"
+                label="COM_JFILTERS_FIELD_ROOT_LABEL"
+                description="COM_JFILTERS_FIELD_ROOT_DESC"
+                layout="joomla.form.field.radio.switcher"
+                default="0"
+                filter="integer"
+                validate="options"
+        >
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+
+        <field
+                name="display"
+                type="displaytypes"
+                label="COM_JFILTERS_FIELD_DISPLAY_LABEL"
+                required="true"
+        >
+            <option value="links"/>
+            <option value="checkboxes" multiselect="true"/>
+            <option value="list" edition="100"/>
+            <option value="radios" edition="100"/>
+            <option value="buttons_single" edition="100"/>
+            <option value="buttons_multi" edition="100" multiselect="true"/>
+            <option value="calendar" edition="100" dataType="date"/>
+            <option value="range_inputs" edition="100" dataType="int,float" range="true"/>
+            <option value="range_sliders" edition="100" dataType="int,float" range="true"/>
+            <option value="range_inputs_sliders" edition="100" dataType="int,float" range="true"/>
+        </field>
+
+        <field
+                name="config_name"
+                type="hidden"
+        />
+
+        <field
+                name="config_type"
+                type="configtypetext"
+                label="COM_JFILTERS_FIELD_TYPE_LABEL"
+                readonly="true"
+        />
+
+        <field
+                name="name"
+                type="text"
+                label="COM_JFILTERS_FIELD_NAME_LABEL"
+                readonly="true"
+        />
+
+        <field
+                name="context"
+                type="hidden"
+        />
+
+        <field
+                name="context_alias"
+                type="contextaliastext"
+                label="COM_JFILTERS_FIELD_CONTEXT_LABEL"
+                readonly="true"
+        />
+
+        <field
+                name="state"
+                type="list"
+                label="JSTATUS"
+                default="1"
+                id="published"
+                class="custom-select-color-state"
+                size="1"
+        >
+            <option value="1">JPUBLISHED</option>
+            <option value="2">COM_JFILTERS_STATE_LISTENING</option>
+            <option value="0">JUNPUBLISHED</option>
+
+        </field>
+
+        <field
+                name="access"
+                type="accesslevel"
+                label="JFIELD_ACCESS_LABEL"
+                size="1"
+        />
+
+        <field
+                name="checked_out"
+                type="hidden"
+                filter="unset"
+        />
+
+        <field
+                name="checked_out_time"
+                type="hidden"
+                filter="unset"
+        />
+
+        <field
+                name="language"
+                type="contentlanguage"
+                label="JFIELD_LANGUAGE_LABEL"
+                readonly="true"
+        >
+            <option value="*">JALL</option>
+        </field>
+    </fieldset>
+
+    <fields name="attribs">
+        <fieldset name="basic-attribs" label="COM_JFILTERS_BASIC_ATTRIBS_FIELDSET_LABEL">
+            <!-- Store the type of the dynamic filter. We use that in order not to query the db. Fed during the filters generation -->
+            <field
+                    name="type"
+                    type="hidden"
+            />
+
+            <field
+                    name="isTree"
+                    type="hidden"
+            />
+
+            <field
+                    name="dataType"
+                    type="hidden"
+            />
+
+
+            <field
+                    name="toggle_state"
+                    type="jfilterslist"
+                    label="COM_JFILTERS_FIELD_TOGGLE_STATE_LABEL"
+                    validate="options"
+                    useglobal="true"
+                    data-edition="100"
+            >
+                <option value="expanded">COM_JFILTERS_FIELD_TOGGLE_STATE_EXPANDED</option>
+                <option value="collapsed">COM_JFILTERS_FIELD_TOGGLE_STATE_COLLAPSED</option>
+            </field>
+
+            <field
+                    name="date_format"
+                    type="list"
+                    label="COM_JFILTERS_FIELD_DATE_FORMAT_LABEL"
+                    default="d M, Y"
+                    showon="attribs.dataType:date"
+
+            >
+                <option value="d M, Y">d M, Y (01 Jan, 1970)</option>
+                <option value="D, d M Y">D, d M Y (Thu, 01 Jan 1970)</option>
+                <option value="j M, Y">j M, Y (1 Jan, 1970)</option>
+                <option value="j/n/Y">j/n/Y (1/1/1970)</option>
+                <option value="d F, Y">d F, Y (01 January, 1970)</option>
+                <option value="M d, Y">M d, Y (Jan 01, 1970)</option>
+                <option value="M j, Y">M j, Y (Jan 1, 1970)</option>
+                <option value="n - j - Y">n-j-Y (1 - 1 - 1970)</option>
+                <option value="F d, Y">d F,Y (January 01, 1970)</option>
+                <option value="Y/M/d">Y/M/d (1970/Jan/01)</option>
+                <option value="Y - M - j">Y-M-j (1970 - Jan - 1)</option>
+                <option value="Y/n/j">Y-n-j (1970 - 1 - 1)</option>
+                <option value="Y年n月j日">Y年n月j日 (1970年1月1日)</option>
+                <option value="Y - F - d">Y-F-d (1970 - January - 01)</option>
+            </field>
+
+            <field
+                    name="calendar_mode"
+                    type="radio"
+                    label="COM_JFILTERS_FIELD_CALENDAR_MODE_LABEL"
+                    default="single"
+                    validate="options"
+                    showon=".display:calendar"
+            >
+                <option value="single">COM_JFILTERS_FIELD_CALENDAR_MODE_SINGLE</option>
+                <option value="range">COM_JFILTERS_FIELD_CALENDAR_MODE_RANGE</option>
+            </field>
+
+            <field
+                    name="min_date"
+                    type="calendar"
+                    label="COM_JFILTERS_FIELD_MIN_DATE_LABEL"
+                    translateformat="true"
+                    showtime="true"
+                    filter="user_utc"
+                    showon=".display:calendar"
+            />
+
+            <field
+                    name="max_date"
+                    type="calendar"
+                    label="COM_JFILTERS_FIELD_MAX_DATE_LABEL"
+                    translateformat="true"
+                    showtime="true"
+                    filter="user_utc"
+                    showon=".display:calendar"
+            />
+
+            <field
+                    name="show_time"
+                    type="radio"
+                    label="COM_JFILTERS_FIELD_SHOW_TIME_LABEL"
+                    layout="joomla.form.field.radio.switcher"
+                    default="0"
+                    filter="integer"
+                    validate="options"
+                    showon="attribs.dataType:date[AND].display!:calendar"
+            >
+                <option value="0">JNO</option>
+                <option value="1">JYES</option>
+            </field>
+
+            <field
+                    name="min_value"
+                    type="number"
+                    label="COM_JFILTERS_FIELD_MIN_VALUE_LABEL"
+                    filter="integer"
+                    showon=".display:range_inputs[OR].display:range_sliders[OR].display:range_inputs_sliders"
+            />
+
+            <field
+                    name="max_value"
+                    type="number"
+                    label="COM_JFILTERS_FIELD_MAX_VALUE_LABEL"
+                    filter="integer"
+                    showon=".display:range_inputs[OR].display:range_sliders[OR].display:range_inputs_sliders"
+            />
+
+            <field
+                    name="options_sort_by"
+                    type="sortlist"
+                    label="COM_JFILTERS_FIELD_OPTIONS_SORT_BY_OPTION_LABEL"
+                    useglobal="true"
+                    showon="attribs.isTree!:1[AND].display!:calendar[AND].display!:range_inputs[AND].display!:range_sliders[AND].display!:range_inputs_sliders"
+            >
+                <option value="label">COM_JFILTERS_FIELD_LABEL_ALPHABETICALLY</option>
+                <option value="count">COM_JFILTERS_FIELD_RESULTS_NUMBER</option>
+            </field>
+
+            <field
+                    name="options_sort_direction"
+                    type="list"
+                    label="COM_JFILTERS_FIELD_OPTIONS_SORT_DIRECTION_OPTION_LABEL"
+                    useglobal="true"
+                    validate="options"
+                    showon="attribs.isTree!:1[AND].display!:calendar[AND].display!:range_inputs[AND].display!:range_sliders[AND].display!:range_inputs_sliders"
+            >
+                <option value="asc">COM_JFILTERS_FIELD_ASCENDING</option>
+                <option value="desc">COM_JFILTERS_FIELD_DESCENDING</option>
+            </field>
+
+            <field
+                    name="show_clear_option"
+                    type="list"
+                    label="COM_JFILTERS_FIELD_SHOW_CLEAR_OPTION_LABEL"
+                    useglobal="true"
+                    class="form-select-color-state"
+                    validate="options"
+            >
+                <option value="0">JHIDE</option>
+                <option value="1">JSHOW</option>
+            </field>
+
+            <field
+                    name="show_option_counter"
+                    type="jfilterslist"
+                    label="COM_JFILTERS_FIELD_SHOW_OPTION_COUNTER_LABEL"
+                    useglobal="true"
+                    class="form-select-color-state"
+                    validate="options"
+                    data-edition="100"
+                    showon=".display!:range_inputs[AND].display!:range_sliders[AND].display!:range_inputs_sliders"
+            >
+                <option value="0">JHIDE</option>
+                <option value="1">JSHOW</option>
+            </field>
+
+            <field
+                    name="list_search"
+                    type="jfilterslist"
+                    label="COM_JFILTERS_FIELD_LIST_SEARCH_LABEL"
+                    description="COM_JFILTERS_FIELD_LIST_SEARCH_DESC"
+                    useglobal="true"
+                    class="form-select-color-state"
+                    validate="options"
+                    data-edition="100"
+                    showon=".display!:calendar[AND].display!:range_inputs[AND].display!:range_sliders[AND].display!:range_inputs_sliders"
+            >
+                <option value="0">JHIDE</option>
+                <option value="1">JSHOW</option>
+            </field>
+
+            <field
+                    name="scrollbar_after"
+                    type="jfiltersnumber"
+                    label="COM_JFILTERS_FIELD_SCROLLBAR_AFTER_LABEL"
+                    showon=".display!:calendar[AND].display!:range_inputs[AND].display!:range_sliders[AND].display!:range_inputs_sliders"
+                    default=""
+                    data-edition="100"
+            />
+
+            <field
+                    name="scrollbar_after_unit"
+                    type="list"
+                    size="1"
+                    label="COM_JFILTERS_FIELD_SCROLLBAR_AFTER_UNIT_LABEL"
+                    default="px"
+                    showon="scrollbar_after!:"
+            >
+                <option value="px">px</option>
+                <option value="em">em</option>
+                <option value="rem">rem</option>
+                <option value="mm">mm</option>
+                <option value="vh">vh</option>
+            </field>
+
+        </fieldset>
+
+        <fieldset name="tree-attribs" label="COM_JFILTERS_TREE_ATTRIBS_FIELDSET_LABEL">
+            <field
+                    name="root_option"
+                    type="optionstree"
+                    label="COM_JFILTERS_FIELD_ROOT_OPTION_LABEL"
+                    description="COM_JFILTERS_FIELD_ROOT_OPTION_DESC"
+            >
+                <option value="">COM_JFILTERS_OPTIONS_SELECT</option>
+            </field>
+
+            <field
+                    name="nested_toggle_state"
+                    type="list"
+                    label="COM_JFILTERS_FIELD_NESTED_TOGGLE_STATE_LABEL"
+                    description="COM_JFILTERS_FIELD_NESTED_TOGGLE_STATE_DESC"
+                    useglobal="true"
+                    showon=".display!:list"
+            >
+                <option value="collapsed">COM_JFILTERS_FIELD_TOGGLE_STATE_COLLAPSED</option>
+                <option value="expanded">COM_JFILTERS_FIELD_TOGGLE_STATE_EXPANDED</option>
+            </field>
+
+            <field
+                    name="parent_node_linkable"
+                    type="list"
+                    label="COM_JFILTERS_FIELD_PARENT_NODE_LINKABLE_LABEL"
+                    description="COM_JFILTERS_FIELD_PARENT_NODE_LINKABLE_DESC"
+                    class="form-select-color-state"
+                    useglobal="true"
+                    showon=".display!:list"
+                    validate="options"
+                    filter="int"
+            >
+                <option value="0">JNO</option>
+                <option value="1">JYES</option>
+            </field>
+
+            <field
+                    name="show_sub_node_contents_on_parent"
+                    type="list"
+                    label="COM_JFILTERS_FIELD_SHOW_SUB_NODES_CONTENT_ON_PARENT_LABEL"
+                    useglobal="true"
+                    class="form-select-color-state"
+                    validate="options"
+            >
+                <option value="0">JNO</option>
+                <option value="1">JYES</option>
+            </field>
+        </fieldset>
+
+        <fieldset name="seo-attribs" label="COM_JFILTERS_SEO_ATTRIBS_FIELDSET_LABEL">
+
+            <field
+                    name="show_in_url"
+                    type="radio"
+                    label="COM_JFILTERS_FIELD_SHOW_IN_URL_LABEL"
+                    default="path"
+                    filter="cmd"
+            >
+                <option value="path">COM_JFILTERS_PATH</option>
+                <option value="query">COM_JFILTERS_QUERY</option>
+            </field>
+
+            <field
+                    name="max_path_nesting_levels"
+                    type="list"
+                    label="COM_JFILTERS_FIELD_MAX_PATH_NESTING_LEVELS_LABEL"
+                    description="COM_JFILTERS_FIELD_MAX_PATH_NESTING_LEVELS_DESC"
+                    useglobal="1"
+                    showon="attribs.isTree:1"
+                    onchange="alert(Joomla.Text._('COM_JFILTERS_FIELD_MAX_PATH_NESTING_WARNING'))"
+                    filter="int"
+                    validate="options"
+            >
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </field>
+
+            <field
+                    name="show_in_page_title"
+                    type="list"
+                    label="COM_JFILTERS_FIELD_SHOW_IN_PAGE_TITLE_LABEL"
+                    class="form-select-color-state"
+                    useglobal="1"
+                    validate="options"
+            >
+                <option value="0">JNO</option>
+                <option value="1">JYES</option>
+            </field>
+
+            <field
+                    name="follow_links"
+                    type="list"
+                    label="COM_JFILTERS_FIELD_FOLLOW_BY_SEARCH_BOTS_LABEL"
+                    class="form-select-color-state"
+                    useglobal="1"
+                    validate="options"
+            >
+                <option value="0">JNO</option>
+                <option value="1">JYES</option>
+            </field>
+
+            <field
+                    name="use_canonical"
+                    type="usecanonical"
+                    label="COM_JFILTERS_FIELD_USE_CANONICALS_LABEL"
+                    description="COM_JFILTERS_FIELD_USE_CANONICALS_DESC"
+                    class="form-select-color-state"
+                    useglobal="1"
+                    validate="options"
+                    showon=".root:1"
+            >
+                <option value="0">JNO</option>
+                <option value="1">JYES</option>
+            </field>
+
+        </fieldset>
+
+        <fieldset name="advanced-attribs" label="COM_JFILTERS_ADVANCED_FIELDSET_LABEL">
+            <field
+                    name="show_on_selected_filters"
+                    type="filters"
+                    label="COM_JFILTERS_FIELD_SHOW_IF_SELECTED_LABEL"
+                    multiple="true"
+                    layout="joomla.form.field.groupedlist-fancy-select"
+                    data-edition="100"
+            />
+
+            <field
+                    name="show_on_operator"
+                    type="jfilterslist"
+                    label="COM_JFILTERS_FIELD_SHOW_ON_OPERATOR_LABEL"
+                    description="COM_JFILTERS_FIELD_SHOW_ON_OPERATOR_DESC"
+                    showon="show_on_selected_filters!:"
+                    default="OR"
+                    filter="cmd"
+                    validate="options"
+                    data-edition="100"
+            >
+                <option value="OR">OR</option>
+                <option value="AND">AND</option>
+            </field>
+        </fieldset>
+    </fields>
+</form>

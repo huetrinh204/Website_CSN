@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright © Blue-coder.com, All rights reserved.
+
+Configuration for the generation of the dynamic filters.
+The file defines if a filter will be generated from a dynamic type (e.g. fields) and it's configuration.
+Filters not mentioned here, but will be encountered in the runtime (e.g. fields: checkboxes, radio), will be generated and get the default properties.
+
+Additionally this is the optimal place to add configuration for 3rd party field plugins.
+-->
+
+
+<filters>
+    <!-- configName : The filter name property as appeared in the filters.xml -->
+    <Nofilter configName="fields">
+        <!-- The name as appeared in the filter.definition.type property of the filters.xml -->
+        <name>calendar</name>
+
+        <!-- If false, filter will not be generated for that type -->
+        <generateFilter>true</generateFilter>
+
+        <!--
+        Set the allowed display types for that filter.
+        A display is a layout file name (can be found in the module's tmpl or in the module's template overrides).
+        If missed, the default displays will be used.
+        -->
+        <displays>
+            <display>range_calendar</display>
+        </displays>
+
+    </Nofilter>
+</filters>

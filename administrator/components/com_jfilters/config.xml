@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <fieldset
+            name="filters"
+            label="COM_JFILTERS_BASIC_ATTRIBS_FIELDSET_LABEL"
+            addfieldprefix="Bluecoder\Component\Jfilters\Administrator\Field"
+    >
+        <field
+                name="toggle_state"
+                type="jfilterslist"
+                label="COM_JFILTERS_FIELD_TOGGLE_STATE_LABEL"
+                validate="options"
+                default="expanded"
+                data-edition="100"
+        >
+            <option value="expanded">COM_JFILTERS_FIELD_TOGGLE_STATE_EXPANDED</option>
+            <option value="collapsed">COM_JFILTERS_FIELD_TOGGLE_STATE_COLLAPSED</option>
+        </field>
+
+        <field
+                name="options_sort_by"
+                type="list"
+                label="COM_JFILTERS_FIELD_OPTIONS_SORT_BY_OPTION_LABEL"
+                validate="options"
+                default="label"
+        >
+            <option value="label">COM_JFILTERS_FIELD_LABEL_ALPHABETICALLY</option>
+            <option value="count">COM_JFILTERS_FIELD_RESULTS_NUMBER</option>
+        </field>
+
+        <field
+                name="options_sort_direction"
+                type="list"
+                label="COM_JFILTERS_FIELD_OPTIONS_SORT_DIRECTION_OPTION_LABEL"
+                validate="options"
+                default="asc"
+        >
+            <option value="asc">COM_JFILTERS_FIELD_ASCENDING</option>
+            <option value="desc">COM_JFILTERS_FIELD_DESCENDING</option>
+        </field>
+
+        <field
+                name="show_clear_option"
+                type="radio"
+                label="COM_JFILTERS_FIELD_SHOW_CLEAR_OPTION_LABEL"
+                layout="joomla.form.field.radio.switcher"
+                filter="integer"
+                validate="options"
+                default="1"
+        >
+            <option value="0">JHIDE</option>
+            <option value="1">JSHOW</option>
+        </field>
+
+        <field
+                name="show_option_counter"
+                type="jfilterslist"
+                label="COM_JFILTERS_FIELD_SHOW_OPTION_COUNTER_LABEL"
+                layout="joomla.form.field.radio.switcher"
+                validate="options"
+                default="1"
+                data-edition="100"
+        >
+            <option value="0">JHIDE</option>
+            <option value="1">JSHOW</option>
+        </field>
+
+        <field
+                name="list_search"
+                type="jfilterslist"
+                label="COM_JFILTERS_FIELD_LIST_SEARCH_LABEL"
+                description="COM_JFILTERS_FIELD_LIST_SEARCH_DESC"
+                layout="joomla.form.field.radio.switcher"
+                validate="options"
+                default="0"
+                data-edition="100"
+        >
+            <option value="0">JHIDE</option>
+            <option value="1">JSHOW</option>
+        </field>
+
+        <field
+                name="max_option_label_length"
+                type="number"
+                min="15"
+                max="120"
+                step="1"
+                default="55"
+                onchange="if(this.value>120){this.value=120;} else if(15>this.value){this.value=15;}"
+                label="COM_JFILTERS_FIELD_MAX_OPTION_LABEL_CHARACTERS_LABEL"
+                description="COM_JFILTERS_FIELD_MAX_OPTION_LABEL_CHARACTERS_DESC"
+        />
+
+        <field
+                name="max_option_value_length"
+                type="number"
+                min="15"
+                max="99"
+                step="1"
+                default="35"
+                onchange="if(this.value>99){this.value=99;} else if(15>this.value){this.value=15;}"
+                label="COM_JFILTERS_FIELD_MAX_OPTION_VALUE_CHARACTERS_LABEL"
+                description="COM_JFILTERS_FIELD_MAX_OPTION_VALUE_CHARACTERS_DESC"
+        />
+
+    </fieldset>
+
+    <fieldset name="tree-attribs" label="COM_JFILTERS_TREE_ATTRIBS_FIELDSET_LABEL">
+        <field
+                name="nested_toggle_state"
+                type="list"
+                label="COM_JFILTERS_FIELD_NESTED_TOGGLE_STATE_LABEL"
+                description="COM_JFILTERS_FIELD_NESTED_TOGGLE_STATE_DESC"
+                default="collapsed"
+        >
+            <option value="collapsed">COM_JFILTERS_FIELD_TOGGLE_STATE_COLLAPSED</option>
+            <option value="expanded">COM_JFILTERS_FIELD_TOGGLE_STATE_EXPANDED</option>
+        </field>
+
+        <field
+                name="parent_node_linkable"
+                type="radio"
+                label="COM_JFILTERS_FIELD_PARENT_NODE_LINKABLE_LABEL"
+                description="COM_JFILTERS_FIELD_PARENT_NODE_LINKABLE_DESC"
+                layout="joomla.form.field.radio.switcher"
+                filter="int"
+                validate="options"
+                default="1"
+        >
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+
+        <field
+                name="show_sub_node_contents_on_parent"
+                type="radio"
+                label="COM_JFILTERS_FIELD_SHOW_SUB_NODES_CONTENT_ON_PARENT_LABEL"
+                layout="joomla.form.field.radio.switcher"
+                default="0"
+                filter="int"
+                validate="options"
+        >
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+    </fieldset>
+
+    <fieldset name="seo-attribs" label="COM_JFILTERS_SEO_ATTRIBS_FIELDSET_LABEL">
+        <field
+                name="max_path_nesting_levels"
+                type="list"
+                label="COM_JFILTERS_FIELD_MAX_PATH_NESTING_LEVELS_LABEL"
+                description="COM_JFILTERS_FIELD_MAX_PATH_NESTING_LEVELS_DESC"
+                default="2"
+                filter="int"
+                validate="options"
+        >
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </field>
+
+        <field
+                name="show_in_page_title"
+                type="radio"
+                label="COM_JFILTERS_FIELD_SHOW_IN_PAGE_TITLE_LABEL"
+                layout="joomla.form.field.radio.switcher"
+                default="1"
+                validate="options"
+                filter="integer"
+        >
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+
+        <field
+                name="append_in_menu_item_title"
+                type="radio"
+                label="COM_JFILTERS_FIELD_APPEND_IN_MENU_ITEM_TITLE_LABEL"
+                layout="joomla.form.field.radio.switcher"
+                default="0"
+                validate="options"
+                filter="integer"
+        >
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+
+        <field
+                name="follow_links"
+                type="radio"
+                label="COM_JFILTERS_FIELD_FOLLOW_BY_SEARCH_BOTS_LABEL"
+                layout="joomla.form.field.radio.switcher"
+                default="0"
+                filter="integer"
+                validate="options"
+        >
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+
+        <field
+                name="use_canonical"
+                type="radio"
+                label="COM_JFILTERS_FIELD_USE_CANONICALS_LABEL"
+                description="COM_JFILTERS_FIELD_USE_CANONICALS_DESC"
+                layout="joomla.form.field.radio.switcher"
+                default="1"
+                validate="options"
+        >
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+
+        <field
+            name="title_separator"
+            type="input"
+            label="COM_JFILTERS_FIELD_USE_TITLE_SEPARATOR_LABEL"
+            description="COM_JFILTERS_FIELD_USE_TITLE_SEPARATOR_DESC"
+            default=" "
+            />
+
+    </fieldset>
+    <fieldset
+            name="results"
+            label="COM_JFILTERS_RESULTS_ATTRIBS_FIELDSET_LABEL"
+    >
+        <field
+                name="show_taxonomy"
+                type="radio"
+                label="COM_JFILTERS_CONFIG_SHOW_TAXONOMY_LABEL"
+                layout="joomla.form.field.radio.switcher"
+                default="1"
+        >
+            <option value="0">JHIDE</option>
+            <option value="1">JSHOW</option>
+        </field>
+
+        <field
+                name="show_description"
+                type="radio"
+                label="COM_JFILTERS_CONFIG_SHOW_DESCRIPTION_LABEL"
+                layout="joomla.form.field.radio.switcher"
+                default="1"
+        >
+            <option value="0">JHIDE</option>
+            <option value="1">JSHOW</option>
+        </field>
+
+        <field
+                name="description_length"
+                type="number"
+                label="COM_JFILTERS_CONFIG_DESCRIPTION_LENGTH_LABEL"
+                default="255"
+                filter="integer"
+                showon="show_description:1"
+        />
+
+        <field
+                name="show_image"
+                type="radio"
+                label="COM_JFILTERS_CONFIG_SHOW_IMAGE_LABEL"
+                description="COM_JFILTERS_CONFIG_SHOW_IMAGE_DESC"
+                layout="joomla.form.field.radio.switcher"
+                default="0"
+        >
+            <option value="0">JHIDE</option>
+            <option value="1">JSHOW</option>
+        </field>
+
+        <field
+                name="image_class"
+                type="text"
+                label="COM_JFILTERS_CONFIG_IMAGE_CLASS_LABEL"
+                validate="CssIdentifier"
+                showon="show_image:1"
+        />
+
+        <field
+                name="link_image"
+                type="radio"
+                label="COM_JFILTERS_CONFIG_LINKED_IMAGE_LABEL"
+                layout="joomla.form.field.radio.switcher"
+                default="0"
+                showon="show_image:1"
+        >
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+
+        <field
+                name="show_date"
+                type="radio"
+                label="COM_JFILTERS_CONFIG_SHOW_DATE_LABEL"
+                layout="joomla.form.field.radio.switcher"
+                default="1"
+        >
+            <option value="0">JHIDE</option>
+            <option value="1">JSHOW</option>
+        </field>
+
+        <field
+                name="show_url"
+                type="radio"
+                label="COM_JFILTERS_CONFIG_SHOW_URL_LABEL"
+                layout="joomla.form.field.radio.switcher"
+                default="1"
+        >
+            <option value="0">JHIDE</option>
+            <option value="1">JSHOW</option>
+        </field>
+
+    </fieldset>
+
+    <fieldset
+            name="permissions"
+            label="JCONFIG_PERMISSIONS_LABEL"
+            description="JCONFIG_PERMISSIONS_DESC"
+    >
+
+        <field
+                name="rules"
+                type="rules"
+                label="JCONFIG_PERMISSIONS_LABEL"
+                validate="rules"
+                filter="rules"
+                component="com_jfilters"
+                section="component"
+        />
+
+    </fieldset>
+
+    <fieldset
+            name="advanced"
+            label="COM_JFILTERS_ADVANCED_FIELDSET_LABEL"
+            description="COM_JFILTERS_ADVANCED_FIELDSET_DESC"
+    >
+        <field
+                name="profiling"
+                type="radio"
+                label="COM_JFILTERS_FIELD_PROFILING_LABEL"
+                description="COM_JFILTERS_FIELD_PROFILING_DEBUG"
+                layout="joomla.form.field.radio.switcher"
+                validate="options"
+                default="0"
+        >
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+
+        <field
+                name="edit_filters_config_file_path"
+                type="radio"
+                label="COM_JFILTERS_FIELD_EDIT_FILTERS_CONFIG_PATH_LABEL"
+                layout="joomla.form.field.radio.switcher"
+                default="0"
+                validate="options"
+        >
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+
+        <field
+                name="filters_config_file_path"
+                type="text"
+                label="COM_JFILTERS_FIELD_FILTERS_CONFIG_PATH_LABEL"
+                default="administrator/components/com_jfilters/config_presets/filters.xml"
+                required="true"
+                filter="path"
+                pattern="[A-Za-z0-9_\/-]+\.xml"
+                showon="edit_filters_config_file_path:1"
+        />
+
+        <field
+                name="edit_contexts_config_file_path"
+                type="radio"
+                label="COM_JFILTERS_FIELD_EDIT_CONTEXTS_CONFIG_PATH_LABEL"
+                layout="joomla.form.field.radio.switcher"
+                default="0"
+                validate="options"
+        >
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+
+        <field
+                name="contexts_config_file_path"
+                type="text"
+                label="COM_JFILTERS_FIELD_CONTEXTS_CONFIG_PATH_LABEL"
+                default="administrator/components/com_jfilters/config_presets/contexts.xml"
+                required="true"
+                filter="path"
+                pattern="[A-Za-z0-9_\/-]+\.xml"
+                showon="edit_contexts_config_file_path:1"
+        />
+
+        <field
+                name="edit_dynamic_filters_config_file_path"
+                type="radio"
+                label="COM_JFILTERS_FIELD_EDIT_DYNAMIC_FILTERS_CONFIG_PATH_LABEL"
+                layout="joomla.form.field.radio.switcher"
+                default="0"
+                validate="options"
+        >
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+
+        <field
+                name="dynamic_filters_config_file_path"
+                type="text"
+                label="COM_JFILTERS_FIELD_DYNAMIC_FILTERS_CONFIG_PATH_LABEL"
+                default="administrator/components/com_jfilters/config_presets/filters/dynamic.xml"
+                required="true"
+                filter="path"
+                pattern="[A-Za-z0-9_\/-]+\.xml"
+                showon="edit_dynamic_filters_config_file_path:1"
+        />
+
+        <field
+                name="edit_preferences_file_path"
+                type="radio"
+                label="COM_JFILTERS_FIELD_EDIT_PREFERENCES_PATH_LABEL"
+                layout="joomla.form.field.radio.switcher"
+                default="0"
+                validate="options"
+        >
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+
+        <field
+                name="preferences_file_path"
+                type="text"
+                label="COM_JFILTERS_FIELD_PREFERENCES_PATH_LABEL"
+                default="administrator/components/com_jfilters/config_presets/preferences.php"
+                required="true"
+                filter="path"
+                pattern="[A-Za-z0-9_\/-]+\.php"
+                showon="edit_preferences_file_path:1"
+        />
+
+    </fieldset>
+</config>

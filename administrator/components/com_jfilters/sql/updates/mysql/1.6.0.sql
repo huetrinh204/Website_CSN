@@ -1,0 +1,1 @@
+ALTER TABLE `#__categories` ADD KEY `jf_published_extension` (`published`,`extension`) COMMENT 'Added by JFilters';

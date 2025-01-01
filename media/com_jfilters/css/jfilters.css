@@ -1,0 +1,52 @@
+.icon-jfilters {
+    background: url("../images/jfilters_logo_16.svg") center no-repeat;
+    width: 17px;
+    height: 16px;
+}
+
+.icon-headphones:before {
+    content: "\f025";
+}
+
+/* This is a workaround. We use the 'icon-archive' for the the listening state */
+#jfilters-list-filters .icon-archive:before {
+    content: "";
+    color: #3e80c6;
+}
+
+#jfilters-list-filters .icon-archive {
+    border-color: #3e80c6;
+}
+
+/* Filters Modal */
+#jfilters-list-filters .collapsible:hover td {
+    background-color: rgba(0, 0, 0, 0.075);
+}
+
+#jfilters-list-filters .expand-icon {
+    padding-inline-start: 2rem;
+}
+
+#jfilters-list-filters .collapsible[aria-expanded="true"] .expand-icon .icon-chevron-down{
+    transform: rotate(180deg);
+}
+
+/* Footer */
+rating {
+    display: flex;
+}
+
+.rating__stars {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0 .3rem 0 0;
+    line-height: 2rem;
+}
+
+.rating__star svg {
+    fill: #f7ce30;
+    height: 1rem;
+    width: auto;
+}

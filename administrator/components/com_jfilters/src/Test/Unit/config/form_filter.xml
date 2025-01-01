@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<field
+        name="display"
+        type="displaytypes"
+        label="COM_JFILTERS_FIELD_DISPLAY_LABEL"
+        required="true"
+>
+    <option value="links"></option>
+    <option multiselect="true" value="checkboxes"></option>
+    <option value="list"></option>
+    <option value="radios"></option>
+    <option value="buttons_single"></option>
+    <option multiselect="true" value="buttons_multi"></option>
+</field>

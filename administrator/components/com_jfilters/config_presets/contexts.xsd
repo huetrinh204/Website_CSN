@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="urn:jfilters:contexts" xmlns:ns1="urn:jfilters:contexts" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <xs:import namespace="http://www.w3.org/2001/XMLSchema-instance" schemaLocation="xsi.xsd"/>
+    <xs:element name="contexts">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="ns1:context"/>
+            </xs:sequence>
+            <xs:attribute ref="xsi:schemaLocation" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="context">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="ns1:item"/>
+            </xs:sequence>
+            <xs:attribute name="alias" use="required" type="xs:NCName"/>
+            <xs:attribute name="name" use="required" type="xs:NCName"/>
+            <xs:attribute name="typeId" use="required" type="xs:integer"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="item">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="ns1:id"/>
+                <xs:element ref="ns1:title"/>
+                <xs:element minOccurs="0" ref="ns1:desciption"/>
+                <xs:element ref="ns1:state"/>
+                <xs:element ref="ns1:access"/>
+                <xs:element ref="ns1:language"/>
+                <xs:sequence minOccurs="0">
+                    <xs:element ref="ns1:ordering"/>
+                    <xs:element ref="ns1:modified_date"/>
+                </xs:sequence>
+                <xs:element ref="ns1:publish_start_date"/>
+                <xs:element ref="ns1:publish_end_date"/>
+            </xs:sequence>
+            <xs:attribute name="dbTable" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="id">
+        <xs:complexType>
+            <xs:attribute name="dbColumn" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="title">
+        <xs:complexType>
+            <xs:attribute name="dbColumn" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="desciption">
+        <xs:complexType>
+            <xs:attribute name="dbColumn" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="state">
+        <xs:complexType>
+            <xs:attribute name="dbColumn" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="access">
+        <xs:complexType>
+            <xs:attribute name="dbColumn" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="language">
+        <xs:complexType>
+            <xs:attribute name="dbColumn" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ordering">
+        <xs:complexType>
+            <xs:attribute name="dbColumn" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="modified_date">
+        <xs:complexType>
+            <xs:attribute name="dbColumn" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="publish_start_date">
+        <xs:complexType>
+            <xs:attribute name="dbColumn" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="publish_end_date">
+        <xs:complexType>
+            <xs:attribute name="dbColumn" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

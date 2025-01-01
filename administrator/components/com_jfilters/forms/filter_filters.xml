@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form addfieldprefix="Bluecoder\Component\Jfilters\Administrator\Field">
+    <fields name="filter">
+        <field
+                name="search"
+                type="text"
+                label="COM_JFILTERS_FILTER_SEARCH_LABEL"
+                hint="JSEARCH_FILTER"
+        />
+
+        <field
+                name="state"
+                type="list"
+                onchange="this.form.submit();"
+        >
+            <option value="">JOPTION_SELECT_PUBLISHED</option>
+            <option value="1">JPUBLISHED</option>
+            <option value="2">COM_JFILTERS_STATE_LISTENING</option>
+            <option value="0">JUNPUBLISHED</option>
+        </field>
+
+        <field
+                name="config_name"
+                type="configtype"
+                label="COM_JFILTERS_FIELD_CONFIG_TYPE_LABEL"
+                onchange="this.form.submit();"
+        >
+            <option value="">COM_JFILTERS_SELECT_CONFIG_TYPE</option>
+        </field>
+
+        <field
+                name="context"
+                type="context"
+                label="COM_JFILTERS_FIELD_CONTEXT_LABEL"
+                onchange="this.form.submit();"
+        >
+            <option value="">COM_JFILTERS_SELECT_CONTEXT</option>
+        </field>
+
+        <field
+                name="access"
+                type="accesslevel"
+                label="JOPTION_SELECT_ACCESS"
+                onchange="this.form.submit();"
+        >
+            <option value="">JOPTION_SELECT_ACCESS</option>
+        </field>
+
+        <field
+                name="language"
+                type="contentlanguage"
+                label="JOPTION_SELECT_LANGUAGE"
+                onchange="this.form.submit();"
+        >
+            <option value="">JOPTION_SELECT_LANGUAGE</option>
+            <option value="*">JALL</option>
+        </field>
+    </fields>
+
+    <fields name="list">
+
+        <field
+                name="fullordering"
+                type="list"
+                label="JGLOBAL_SORT_BY"
+                default="a.name ASC"
+                onchange="this.form.submit();"
+        >
+            <option value="">JGLOBAL_SORT_BY</option>
+            <option value="a.ordering ASC">JGRID_HEADING_ORDERING_ASC</option>
+            <option value="a.ordering DESC">JGRID_HEADING_ORDERING_DESC</option>
+            <option value="a.published ASC">JSTATUS_ASC</option>
+            <option value="a.published DESC">JSTATUS_DESC</option>
+            <option value="a.context ASC">JGLOBAL_CONTEXT_ASC</option>
+            <option value="a.context DESC">JGLOBAL_CONTEXT_DESC</option>
+            <option value="a.name ASC">JGLOBAL_TITLE_ASC</option>
+            <option value="a.name DESC">JGLOBAL_TITLE_DESC</option>
+            <option value="access_level ASC">JGRID_HEADING_ACCESS_ASC</option>
+            <option value="access_level DESC">JGRID_HEADING_ACCESS_DESC</option>
+            <option value="language_title ASC" requires="multilanguage">JGRID_HEADING_LANGUAGE_ASC</option>
+            <option value="language_title DESC" requires="multilanguage">JGRID_HEADING_LANGUAGE_DESC</option>
+            <option value="a.id ASC">JGRID_HEADING_ID_ASC</option>
+            <option value="a.id DESC">JGRID_HEADING_ID_DESC</option>
+        </field>
+
+        <field
+                name="limit"
+                type="limitbox"
+                label="JGLOBAL_LIST_LIMIT"
+                default="25"
+                onchange="this.form.submit();"
+        />
+    </fields>
+
+    <fields name="additional">
+        <field
+                name="Itemid"
+                type="menuitem"
+                component="com_jfilters"
+                label="COM_JFILTERS_SET_MENU_ITEM_LABEL"
+                onchange="this.form.submit();"
+                default="0"
+                createbtn="0"
+                filter="integer"
+        >
+            <option value="">JOPTION_SELECT_MENU_ITEM</option>
+        </field>
+    </fields>
+</form>

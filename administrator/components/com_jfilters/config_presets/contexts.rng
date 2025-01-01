@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar ns="urn:jfilters:contexts" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <start>
+        <element name="contexts">
+            <attribute name="xsi:schemaLocation"/>
+            <oneOrMore>
+                <element name="context">
+                    <attribute name="alias">
+                        <data type="NCName"/>
+                    </attribute>
+                    <attribute name="name">
+                        <data type="NCName"/>
+                    </attribute>
+                    <attribute name="typeId">
+                        <data type="integer"/>
+                    </attribute>
+                    <element name="item">
+                        <attribute name="dbTable"/>
+                        <element name="id">
+                            <attribute name="dbColumn">
+                                <data type="NCName"/>
+                            </attribute>
+                        </element>
+                        <element name="title">
+                            <attribute name="dbColumn">
+                                <data type="NCName"/>
+                            </attribute>
+                        </element>
+                        <optional>
+                            <element name="desciption">
+                                <attribute name="dbColumn">
+                                    <data type="NCName"/>
+                                </attribute>
+                            </element>
+                        </optional>
+                        <element name="state">
+                            <attribute name="dbColumn">
+                                <data type="NCName"/>
+                            </attribute>
+                        </element>
+                        <element name="access">
+                            <attribute name="dbColumn">
+                                <data type="NCName"/>
+                            </attribute>
+                        </element>
+                        <element name="language">
+                            <attribute name="dbColumn">
+                                <data type="NCName"/>
+                            </attribute>
+                        </element>
+                        <optional>
+                            <element name="ordering">
+                                <attribute name="dbColumn">
+                                    <data type="NCName"/>
+                                </attribute>
+                            </element>
+                            <element name="modified_date">
+                                <attribute name="dbColumn">
+                                    <data type="NCName"/>
+                                </attribute>
+                            </element>
+                        </optional>
+                        <element name="publish_start_date">
+                            <attribute name="dbColumn">
+                                <data type="NCName"/>
+                            </attribute>
+                        </element>
+                        <element name="publish_end_date">
+                            <attribute name="dbColumn">
+                                <data type="NCName"/>
+                            </attribute>
+                        </element>
+                    </element>
+                </element>
+            </oneOrMore>
+        </element>
+    </start>
+</grammar>

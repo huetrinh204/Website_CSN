@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="package" method="upgrade">
+    <name>JFilters Package</name>
+    <author>Blue-Coder.com</author>
+    <license>GNU General Public License version 2 or later</license>
+    <copyright>(C) 2021 - 2024 Blue-Coder.com. All rights reserved.</copyright>
+    <creationDate>2024-12-05</creationDate>
+    <packagename>jfilters</packagename>
+    <version>1.17.0</version>
+    <url>https://blue-coder.com/</url>
+    <dlid prefix="dlid=" suffix=""/>
+
+    <!--Included package files. -->
+    <files>
+        <file type="component" id="com_jfilters">jfilters.zip</file>
+        <file type="module" id="mod_jfilters_filters" client="site">mod_jfilters_filters.zip</file>
+        <file type="plugin" id="plg_content_jfilters" group="content">plg_content_jfilters.zip</file>
+        <file type="plugin" id="plg_finder_jfiltersindexer" group="finder">plg_finder_jfiltersindexer.zip</file>
+        <file type="plugin" id="plg_jfilters_fieldsubform" group="jfilters">plg_jfilters_fieldsubform.zip</file>
+        <file type="plugin" id="plg_editors-xtd_jfiltersfilters" group="editors-xtd">plg_editors-xtd_jfiltersfilters.zip</file>
+    </files>
+
+    <!-- Installation script -->
+    <scriptfile>script.php</scriptfile>
+
+    <!-- Update servers -->
+    <updateservers>
+        <server type="extension" priority="1" name="JFilters FREE">https://update.blue-coder.com/streams/jfilters-free/joomla.xml</server>
+    </updateservers>
+</extension>

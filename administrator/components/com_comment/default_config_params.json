@@ -1,0 +1,34 @@
+{
+  "global": {
+    "complete_uninstall": "0",
+    "comment_length_backend": "140",
+    "jed": "0",
+    "mailqueue_pageload": "1",
+    "censorship": "0",
+    "censorship_case_sensitive": "0",
+    "censorship_word_list": "nastybitch = nast***tch, motherfucker = moth****cker, fucking = fu**ing, twat, fisting, kokot = ko**t",
+    "censorship_usergroup": [
+      "th align='left' bgcolor='#f57900' colspan="
+    ],
+    "ban_list": ""
+  },
+  "downloadid": "",
+  "update_stats": "1",
+  "upload_extensions": "gif,jpg,jpeg,png,GIF,JPG,JPEG,PNG",
+  "upload_maxsize": "10",
+  "max_number_of_files": 3,
+  "thumbs": {
+    "small": "50x50",
+    "medium": "640x480",
+    "large": "900x600",
+    "original": "2400x1800"
+  },
+  "tmp_file_path": "cache\/com_comment.multimedia",
+  "image_path": "images",
+  "restrict_uploads": "0",
+  "check_mime": "0",
+  "image_extensions": "gif,jpg,png",
+  "ignore_extensions": "",
+  "upload_mime": "image\/jpeg,image\/gif,image\/png",
+  "upload_mime_illegal": "text\/html"
+}

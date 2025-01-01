@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<config>
+
+	<fields name="global">
+		<fieldset name="basic"
+				  description="COM_COMMENT_BASIC_FIELDSET_DESC"
+				  label="COM_COMMENT_BASIC_FIELDSET_LABEL"
+				  addfieldpath="/libraries/compojoom/form/fields"
+		>
+			<field name="complete_uninstall" label="COM_COMMENT_COMPLETE_UNINSTALL_LABEL"
+				   description="COM_COMMENT_COMPLETE_UNINSTALL_DESC" type="list" default="0">
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+			<field name="comment_length_backend" label="COM_COMMENT_COMMENT_LENGTH_BACKEND_LABEL"
+				   description="COM_COMMENT_COMMENT_LENGTH_BACKEND_DESC" type="text" default="140">
+			</field>
+			<field type="hidden" name="jed" default="0"/>
+			<field name="library_load" type="loadcompojoom"
+				   hidden="true" extension="com_comment"/>
+		</fieldset>
+
+		<fieldset name="mailqueue"
+				  description="COM_COMMENT_MAILQUEUE_FIELDSET_DESC"
+				  label="COM_COMMENT_MAILQUEUE_FIELDSET_LABEL"
+				  addfieldpath="/administrator/components/com_comment/models/fields"
+		>
+			<field type="cron" label="COM_COMMENT_MAILQUEUE_CRON_URL_LABEL" desc="COM_COMMENT_MAILQUEUE_CRON_URL_DESC"/>
+			<field name="mailqueue_pageload" label="COM_COMMENT_MAILQUEUE_PAGELOAD_LABEL"
+				   description="COM_COMMENT_MAILQUEUE_PAGELOAD_DESC" type="list" default="1">
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+		</fieldset>
+
+		<fieldset name="security"
+				  description="COM_COMMENT_SECURITY_FIELDSET_DESC"
+				  label="COM_COMMENT_SECURITY_FIELDSET_LABEL"
+		>
+			<field name="censorship" label="COM_COMMENT_CENSORSHIP_LABEL"
+				   description="COM_COMMENT_CENSORSHIP_DESC" type="list" default="0">
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+			<field name="censorship_case_sensitive" label="COM_COMMENT_CENSORSHIP_CASE_LABEL"
+				   description="COM_COMMENT_CENSORSHIP_CASE_DESC" type="list">
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+
+			<field name="censorship_word_list" label="COM_COMMENT_CENSORSHIP_LIST_LABEL"
+				   description="COM_COMMENT_CENSORSHIP_LIST_DESC" type="textarea"
+				   default="nastybitch = nast***tch, motherfucker = moth****cker, fucking = fu**ing, twat, fisting, kokot = ko**t"/>
+
+			<field name="censorship_usergroup" label="COM_COMMENT_CENSORSHIP_USERGROUP_LABEL"
+				   description="COM_COMMENT_CENSORSHIP_USERGROUP_DESC" type="usergrouplist" multiple="multiple" />
+
+			<field type="spacer"/>
+
+			<field name="ban_list" label="COM_COMMENT_BAN_LIST_LABEL"
+				   description="COM_COMMENT_BAN_LIST_DESC" type="textarea"/>
+
+		</fieldset>
+
+
+	</fields>
+
+	<fieldset name="backend" label="COM_COMMENT_CONFIG_BACKEND_HEADER_LABEL"
+			  description="COM_COMMENT_CONFIG_LIVE_UPFATE_HEADER_DESC">
+		<field name="downloadid" type="text" default="" size="30" label="COM_COMMENT_CONFIG_LIVE_UPDATE_DOWNLOAD_ID"
+			   description="COM_COMMENT_CONFIG_LIVE_UPDATE_DOWNLOAD_ID_DESC"/>
+		<field name="update_stats" label="LIB_COMPOJOOM_UPDATE_STATS_LABEL"
+			   description="LIB_COMPOJOOM_UPDATE_STATS_DESC"
+			   class="btn-group" type="radio" default="1">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+	</fieldset>
+
+	<fieldset name="multimedia" label="COM_COMMENT_MULTIMEDIA_LABEL"
+			  description="COM_COMMENT_MULTIMEDIA_DESC_PRO"
+			  addfieldpath="/libraries/compojoom/form/fields">
+		<field name="library_load" type="loadcompojoom"
+			   hidden="true" extension="com_comment"/>
+		<field
+				name="upload_extensions"
+				type="text"
+				size="50"
+				default="gif,jpg,jpeg,png,GIF,JPG,JPEG,PNG"
+				label="LIB_COMPOJOOM_FIELD_LEGAL_EXTENSIONS_LABEL"
+				description="LIB_COMPOJOOM_FIELD_LEGAL_EXTENSIONS_DESC"/>
+
+		<field
+				name="upload_maxsize"
+				type="text"
+				size="50"
+				default="10"
+				label="LIB_COMPOJOOM_FIELD_MAXIMUM_SIZE_LABEL"
+				description="LIB_COMPOJOOM_FIELD_MAXIMUM_SIZE_DESC"/>
+
+		<field
+				name="max_number_of_files"
+				type="text"
+				size="50"
+				filter="int"
+				default="3"
+				label="LIB_COMPOJOOM_FIELD_MAXIMUM_NUMBER_OF_FILES_LABEL"
+				description="LIB_COMPOJOOM_FIELD_MAXIMUM_NUMBER_OF_FILES_DESC"
+				disabled="@@PRO@@"
+				labelclass="@@PRO_DISABLED_CLASS@@"/>
+
+		<fields name="thumbs">
+			<field
+					name="small"
+					type="text"
+					size="20"
+					default="50x50"
+					label="LIB_COMPOJOOM_FIELD_SMALL_THUMB_LABEL"
+					description="LIB_COMPOJOOM_FIELD_SMALL_THUMB_DESC"/>
+
+			<field
+					name="medium"
+					type="text"
+					size="20"
+					default="640x480"
+					label="LIB_COMPOJOOM_FIELD_MEDIUM_THUMB_LABEL"
+					description="LIB_COMPOJOOM_FIELD_MEDIUM_THUMB_DESC"/>
+
+			<field
+					name="large"
+					type="text"
+					size="20"
+					default="900x600"
+					label="LIB_COMPOJOOM_FIELD_LARGE_THUMB_LABEL"
+					description="LIB_COMPOJOOM_FIELD_LARGE_THUMB_DESC"/>
+			<field
+					name="original"
+					type="text"
+					size="20"
+					default="2400x1800"
+					label="LIB_COMPOJOOM_FIELD_ORIGINAL_THUMB_LABEL"
+					description="LIB_COMPOJOOM_FIELD_ORIGINAL_THUMB_DESC"/>
+		</fields>
+
+		<field name="spacer1" type="spacer" class="text"
+			   label="LIB_COMPOJOOM_FOLDERS_PATH_LABEL"
+		/>
+
+		<field
+				name="tmp_file_path"
+				type="text"
+				size="50"
+				default="cache/com_comment.multimedia"
+				label="LIB_COMPOJOOM_FIELD_TMP_PATH_FILE_FOLDER_LABEL"
+				description="LIB_COMPOJOOM_FIELD_TMP_PATH_FILE_FOLDER_DESC" />
+
+		<field
+				name="image_path"
+				type="text"
+				size="50"
+				default="images"
+				label="LIB_COMPOJOOM_FIELD_PATH_IMAGE_FOLDER_LABEL"
+				description="LIB_COMPOJOOM_FIELD_PATH_IMAGE_FOLDER_DESC" />
+
+		<field
+				name="restrict_uploads"
+				type="radio"
+				class="btn-group btn-group-yesno"
+				default="0"
+				label="LIB_COMPOJOOM_FIELD_RESTRICT_UPLOADS_LABEL"
+				description="LIB_COMPOJOOM_FIELD_RESTRICT_UPLOADS_DESC">
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+
+		<field
+				name="check_mime"
+				type="radio"
+				class="btn-group btn-group-yesno"
+				default="0"
+				label="LIB_COMPOJOOM_FIELD_CHECK_MIME_LABEL"
+				description="LIB_COMPOJOOM_FIELD_CHECK_MIME_DESC">
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+
+		<field
+				name="image_extensions"
+				type="text"
+				size="50"
+				default="gif,jpg,png"
+				label="LIB_COMPOJOOM_FIELD_LEGAL_IMAGE_EXTENSIONS_LABEL"
+				description="LIB_COMPOJOOM_FIELD_LEGAL_IMAGE_EXTENSIONS_DESC" />
+
+		<field
+				name="ignore_extensions"
+				type="text"
+				size="50"
+				label="LIB_COMPOJOOM_FIELD_IGNORED_EXTENSIONS_LABEL"
+				description="LIB_COMPOJOOM_FIELD_IGNORED_EXTENSIONS_DESC" />
+
+		<field
+				name="upload_mime"
+				type="text"
+				size="50"
+				default="image/jpeg,image/gif,image/png"
+				label="LIB_COMPOJOOM_FIELD_LEGAL_MIME_TYPES_LABEL"
+				description="LIB_COMPOJOOM_FIELD_LEGAL_MIME_TYPES_DESC" />
+
+		<field
+				name="upload_mime_illegal"
+				type="text"
+				size="50"
+				default="text/html"
+				label="LIB_COMPOJOOM_FIELD_ILLEGAL_MIME_TYPES_LABEL"
+				description="LIB_COMPOJOOM_FIELD_ILLEGAL_MIME_TYPES_DESC" />
+	</fieldset>
+
+	<fieldset name="permissions"
+			  description="JCONFIG_PERMISSIONS_DESC"
+			  label="JCONFIG_PERMISSIONS_LABEL"
+	>
+
+		<field name="rules" type="rules"
+			   component="com_comment"
+			   filter="rules"
+			   validate="rules"
+			   label="JCONFIG_PERMISSIONS_LABEL"
+			   section="component"/>
+	</fieldset>
+</config>

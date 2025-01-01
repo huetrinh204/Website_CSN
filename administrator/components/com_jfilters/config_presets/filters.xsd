@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:jfilters:filters" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="filters" type="urn:filtersType" xmlns:urn="urn:jfilters:filters">
+    <xs:annotation>
+      <xs:documentation>Copyright © Blue-coder.com, All rights reserved.
+
+The generated filters are based on the configuration in that file.
+That means that technically, filters can be generated or added from any table, (if the table has the required columns)</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="definitionType">
+    <xs:sequence>
+      <xs:element name="id">
+        <xs:annotation>
+          <xs:documentation>The id of the filter (should be unique). The id of the filter (should be unique)</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:string">
+              <xs:attribute type="xs:string" name="dbColumn" use="optional"/>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="title">
+        <xs:annotation>
+          <xs:documentation>The title of the filter (should be unique). The title of the filter (should be unique)</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:string">
+              <xs:attribute type="xs:string" name="dbColumn" use="optional"/>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element type="urn:typeType" name="type" minOccurs="0" xmlns:urn="urn:jfilters:filters">
+        <xs:annotation>
+          <xs:documentation>The field type.
+            We can exclude types here.
+            Do not confuse the 'exclude' with the dynamic filters configuration 'generateFilter' prop. which is a global flag.The field type.
+            We can load specific types here.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="context">
+        <xs:annotation>
+          <xs:documentation>The context/component to which the filter refers. The context/component to which the filter refers</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:string">
+              <xs:attribute type="xs:string" name="dbColumn" use="optional"/>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element type="urn:conditionType" name="condition" minOccurs="0" xmlns:urn="urn:jfilters:filters">
+        <xs:annotation>
+          <xs:documentation>A condition to generate a filter based on a value of db column</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="urn:languageType" name="language" minOccurs="0" xmlns:urn="urn:jfilters:filters">
+        <xs:annotation>
+          <xs:documentation>The language to which the filter refers</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="dbTable" use="optional"/>
+    <xs:attribute type="xs:string" name="class" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="valueType" mixed="true">
+    <xs:sequence>
+      <xs:element type="urn:valueType" name="value" minOccurs="0" xmlns:urn="urn:jfilters:filters">
+        <xs:annotation>
+          <xs:documentation>The actual value The actual value</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="urn:labelType" name="label" minOccurs="0" xmlns:urn="urn:jfilters:filters">
+        <xs:annotation>
+          <xs:documentation>The actual label that will be displayed to the user. The actual label that will be displayed to the user</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="urn:aliasType" name="alias" minOccurs="0" xmlns:urn="urn:jfilters:filters">
+        <xs:annotation>
+          <xs:documentation>The actual alias used in the urls.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="urn:parentValueIdType" name="parentValueId" minOccurs="0" xmlns:urn="urn:jfilters:filters">
+        <xs:annotation>
+          <xs:documentation>The parent_id value of that value.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="urn:lftType" name="lft" minOccurs="0" xmlns:urn="urn:jfilters:filters">
+        <xs:annotation>
+          <xs:documentation>The lft of the tree value. See "Nested set model"</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="urn:rgtType" name="rgt" minOccurs="0" xmlns:urn="urn:jfilters:filters">
+        <xs:annotation>
+          <xs:documentation>The rgt of the tree value. See "Nested set model"</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="urn:extensionType" name="extension" minOccurs="0" xmlns:urn="urn:jfilters:filters">
+        <xs:annotation>
+          <xs:documentation>A value can reference a specific extension (e.g. category).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="urn:stateType" name="state" minOccurs="0" xmlns:urn="urn:jfilters:filters">
+        <xs:annotation>
+          <xs:documentation>The state of the value</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="urn:languageType" name="language" minOccurs="0" xmlns:urn="urn:jfilters:filters">
+        <xs:annotation>
+          <xs:documentation>The language to which the value refers.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="urn:metadescriptionType" name="metadescription" minOccurs="0" xmlns:urn="urn:jfilters:filters">
+        <xs:annotation>
+          <xs:documentation>The meta-description.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="urn:metakeywordsType" name="metakeywords" minOccurs="0" xmlns:urn="urn:jfilters:filters">
+        <xs:annotation>
+          <xs:documentation>The meta-keywords.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="urn:requestsType" name="requests" minOccurs="0" xmlns:urn="urn:jfilters:filters">
+        <xs:annotation>
+          <xs:documentation>Set requests from other extensions to that filter.
+            The 1st request is used as canonical in the result pages</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="urn:parentIdType" name="parentId" minOccurs="0" xmlns:urn="urn:jfilters:filters">
+        <xs:annotation>
+          <xs:documentation>Reference the field to which a value belongs</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="dbColumn" use="optional"/>
+    <xs:attribute type="xs:string" name="type" use="optional"/>
+    <xs:attribute type="xs:string" name="dbTable" use="optional"/>
+    <xs:attribute type="xs:string" name="class" use="optional"/>
+    <xs:attribute type="xs:string" name="tree" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="labelType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="dbColumn" use="optional"/>
+        <xs:attribute type="xs:string" name="translate" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="aliasType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="dbColumn" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="parentValueIdType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="dbColumn" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="lftType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="dbColumn" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="rgtType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="dbColumn" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="extensionType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="dbColumn" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="stateType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="dbColumn" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="languageType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="dbColumn" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="metadescriptionType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="dbColumn" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="metakeywordsType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="dbColumn" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="requestType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="extension" use="optional"/>
+        <xs:attribute type="xs:string" name="view" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="requestsType">
+    <xs:sequence>
+      <xs:element type="urn:requestType" name="request" maxOccurs="unbounded" minOccurs="0" xmlns:urn="urn:jfilters:filters"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="itemIdType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="dbColumn" use="optional"/>
+        <xs:attribute type="xs:string" name="reference" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="valueIdType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="dbColumn" use="optional"/>
+        <xs:attribute type="xs:string" name="reference" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="valueRefItemType">
+    <xs:sequence>
+      <xs:element type="urn:itemIdType" name="itemId" xmlns:urn="urn:jfilters:filters">
+        <xs:annotation>
+          <xs:documentation>Reference the context item's primary key to which the filter's value is assigned Reference the context item's primary key to which the filter's value is assigned</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="urn:valueIdType" name="valueId" xmlns:urn="urn:jfilters:filters">
+        <xs:annotation>
+          <xs:documentation>The assigned value or value_id (if there is a separate table for the values).The assigned value or value_id (if there is a separate table for the values)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="urn:typeIdType" name="typeId" minOccurs="0" xmlns:urn="urn:jfilters:filters">
+        <xs:annotation>
+          <xs:documentation>In case the table contains type ids (i.e. contexts), for each value>item row.
+            The typeId for each context, is an attribute referenced in contexts.xml</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="dbTable" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="filterType">
+    <xs:sequence>
+      <xs:element type="urn:definitionType" name="definition" xmlns:urn="urn:jfilters:filters">
+        <xs:annotation>
+          <xs:documentation>Define the filter properties. 
+        Define the filter properties
+        The class should implement the "Bluecoder\Component\Jfilters\Administrator\Model\FilterInterface".
+        If not specified or invalid, the default implementation will be used, as defined in the preferences.xml</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="urn:valueType" name="value" xmlns:urn="urn:jfilters:filters">
+        <xs:annotation>
+          <xs:documentation>The table that holds the values.
+        The type class should extend the "Bluecoder\Component\Jfilters\Administrator\Model\Filter\Option\Collection".
+        
+        The table that holds the values.
+        The type class should extend the "Bluecoder\Component\Jfilters\Administrator\Model\Filter\Option\Collection".
+         The table is created by the content/jfilters plugin, which needs to be enabled</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="urn:valueRefItemType" name="valueRefItem" xmlns:urn="urn:jfilters:filters">
+        <xs:annotation>
+          <xs:documentation>The table that holds the value>item reference. Used to return results. The table that holds the value>item reference. Used to return results</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="name" use="optional"/>
+    <xs:attribute type="xs:string" name="label" use="optional"/>
+    <xs:attribute type="xs:string" name="dynamic" use="optional"/>
+    <xs:attribute type="xs:string" name="root" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="idType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="dbColumn" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="titleType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="dbColumn" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="typeType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="dbColumn" use="optional"/>
+        <xs:attribute type="xs:string" name="excluded" use="optional"/>
+        <xs:attribute type="xs:string" name="included" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="contextType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="dbColumn" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="conditionType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="dbColumn"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="parentIdType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="dbColumn" use="optional"/>
+        <xs:attribute type="xs:string" name="reference" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="typeIdType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="dbColumn"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="filtersType">
+    <xs:sequence>
+      <xs:element type="urn:filterType" name="filter" maxOccurs="unbounded" minOccurs="0" xmlns:urn="urn:jfilters:filters">
+        <xs:annotation>
+          <xs:documentation>Non dynamic, is a single filter with predefined properties  Dynamic means that several filters can be produced from that configuration.  This is used just for the subform fields.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

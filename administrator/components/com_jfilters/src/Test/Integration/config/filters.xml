@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright © Blue-coder.com, All rights reserved.
+
+The generated filters are based on the configuration in that file.
+That means that technically, filters can be generated or added from any table, (if the table has the required columns)
+-->
+
+<filters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="urn:jfilters:filters"
+         xsi:schemaLocation="urn:jfilters:filters filters.xsd"
+>
+
+    <!--Non dynamic, is a single filter with predefined properties -->
+        <filter name="category" label="MYCATEGORIES" dynamic="false" root="true">
+        <!--Define the filter properties. -->
+        <definition>
+            <!--The id of the filter (should be unique). -->
+            <id>1</id>
+            <!--The title of the filter (should be unique). -->
+            <title>Category</title>
+            <!--The context/component to which the filter refers. -->
+            <context>com_content.article</context>
+        </definition>
+
+            <!--
+            The table that holds the values.
+            The type class should extend the "Bluecoder\Component\Jfilters\Administrator\Model\Filter\Option\Collection".
+            -->
+            <value dbTable="#__categories" class="Bluecoder\Component\Jfilters\Administrator\Model\Filter\Option\Collection\Filtered\Nested" tree="true">
+                <!--The actual value -->
+                <value dbColumn="id" type="int"/>
+                <!--The actual label that will be displayed to the user. -->
+                <label dbColumn="title"/>
+                <!--The actual alias used in the urls. -->
+                <alias dbColumn="alias"/>
+                <!--The parent_id value of that value. -->
+                <parentValueId dbColumn="parent_id"/>
+                <!--The lft of the tree value. See "Nested set model" -->
+                <lft dbColumn="lft"/>
+                <!--The rgt of the tree value. See "Nested set model" -->
+                <rgt dbColumn="rgt"/>
+                <!--A value can reference a specific extension (e.g. category).-->
+                <extension dbColumn="extension"/>
+                <!-- The state of the value -->
+                <state dbColumn="published"/>
+                <!--The language to which the value refers. -->
+                <language dbColumn="language"/>
+                <!--The meta-description. -->
+                <metadescription dbColumn="metadesc"/>
+                <!--The meta-keywords. -->
+                <metakeywords dbColumn="metakey"/>
+
+                <!--Set requests from other extensions to that filter.
+                The 1st request is used as canonical in the result pages-->
+                <requests>
+                    <request extension="com_content" view="category">id</request>
+                    <request extension="com_content" view="article">catid</request>
+                </requests>
+            </value>
+
+        <!--The table that holds the value>item reference. Used to return results. -->
+        <valueRefItem dbTable="#__content">
+            <!--Reference the context item's primary key to which the filter's value is assigned -->
+            <itemId dbColumn="id" reference="{context.item.id}"/>
+            <!--The assigned value or value_id (if there is a separate table for the values).-->
+            <valueId dbColumn="catid" reference="{this.value.value}"/>
+        </valueRefItem>
+    </filter>
+
+
+    <!-- Dynamic means that several filters can be produced from that configuration. -->
+    <filter name="fields" label="COM_FIELDS" dynamic="true" root="false">
+        <!--
+        Define the filter properties
+        The class should implement the "Bluecoder\Component\Jfilters\Administrator\Model\FilterInterface".
+        If not specified or invalid, the default implementation will be used, as defined in the preferences.xml
+        -->
+        <definition dbTable="#__fields" class="Bluecoder\Component\Jfilters\Administrator\Model\Filter\DynamicFilter\FieldsFilter">
+            <!--The id of the filter (should be unique) -->
+            <id dbColumn="id"/>
+            <!--The title of the filter (should be unique) -->
+            <title dbColumn="title"/>
+            <!--The field type.
+            We can exclude types here.
+            Do not confuse the 'exclude' with the dynamic filters configuration 'generateFilter' prop. which is a global flag.-->
+            <type dbColumn="type" excluded="subform"/>
+            <!--The context/component to which the filter refers -->
+            <context dbColumn="context"/>
+            <!--The language to which the filter refers -->
+            <language dbColumn="language"/>
+        </definition>
+
+        <!--
+        The table that holds the values.
+        The type class should extend the "Bluecoder\Component\Jfilters\Administrator\Model\Filter\Option\Collection".
+        -->
+        <value dbTable="#__fields_values" class="Bluecoder\Component\Jfilters\Administrator\Model\Filter\Option\Collection\Filtered\Field">
+            <!--The actual value -->
+            <value dbColumn="value" type="string"/>
+            <!--The actual label that will be displayed to the user -->
+            <label dbColumn="value"/>
+            <!--Reference the field to which a value belongs -->
+            <parentId dbColumn="field_id" reference="{this.definition.id}"/>
+        </value>
+
+        <!--The table that holds the value>item reference. Used to return results -->
+        <valueRefItem dbTable="#__fields_values">
+            <!--Reference the context item's primary key to which the filter's value is assigned -->
+            <itemId dbColumn="item_id" reference="{context.item.id}"/>
+            <!--The assigned value or value_id (if there is a separate table for the values)-->
+            <valueId dbColumn="value"/>
+        </valueRefItem>
+    </filter>
+
+
+    <!-- This is used just for the subform fields. -->
+    <filter name="fields/subform" label="PLG_FIELDS_SUBFORM" dynamic="true" root="false">
+        <definition dbTable="#__fields" class="Bluecoder\Component\Jfilters\Administrator\Model\Filter\DynamicFilter\FieldsFilter">
+            <id dbColumn="id"/>
+            <title dbColumn="title"/>
+            <!--The field type.
+            We can load specific types here.-->
+            <type dbColumn="type" included="subform"/>
+            <context dbColumn="context"/>
+            <language dbColumn="language"/>
+        </definition>
+
+        <!-- The table is created by the content/jfilters plugin, which needs to be enabled -->
+        <value dbTable="#__jfilters_fields_subform_values" class="Bluecoder\Component\Jfilters\Administrator\Model\Filter\Option\Collection\Filtered\Field">
+            <value dbColumn="value" type="string"/>
+            <label dbColumn="value"/>
+            <parentId dbColumn="field_id" reference="{this.definition.id}"/>
+        </value>
+
+        <valueRefItem dbTable="#__jfilters_fields_subform_values">
+            <itemId dbColumn="item_id" reference="{context.item.id}"/>
+            <valueId dbColumn="value"/>
+        </valueRefItem>
+    </filter>
+
+    <filter name="tags" label="COM_TAGS" dynamic="false" root="false">
+        <definition>
+            <id>3</id>
+            <title>Tags</title>
+            <context>com_content.article</context>
+            <language dbColumn="language"/>
+        </definition>
+
+        <value dbTable="#__tags" class="Bluecoder\Component\Jfilters\Administrator\Model\Filter\Option\Collection\Filtered\Nested" tree="true">
+            <value dbColumn="id" type="int"/>
+            <label dbColumn="title" translate="true"/>
+            <alias dbColumn="alias"/>
+            <parentValueId dbColumn="parent_id"/>
+            <lft dbColumn="lft"/>
+            <rgt dbColumn="rgt"/>
+            <extension>com_content</extension>
+            <state dbColumn="published"/>
+            <language dbColumn="language"/>
+            <metadescription dbColumn="metadesc"/>
+            <metakeywords dbColumn="metakey"/>
+            <requests>
+                <request extension="com_tags" view="tag">id</request>
+            </requests>
+        </value>
+
+        <valueRefItem dbTable="#__contentitem_tag_map">
+            <itemId dbColumn="content_item_id" reference="{context.item.id}"/>
+            <valueId dbColumn="tag_id" reference="{this.value.value}"/>
+            <!--
+            In case the table contains type ids (i.e. contexts), for each value>item row.
+            The typeId for each context, is an attribute referenced in contexts.xml
+            -->
+            <typeId dbColumn="type_id"/>
+        </valueRefItem>
+    </filter>
+
+</filters>
+

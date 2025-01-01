@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" client="site" method="upgrade">
+    <name>mod_jfilters_filters</name>
+    <author>Blue-Coder.com</author>
+    <creationDate>2024-11-29</creationDate>
+    <copyright>Copyright (C) 2024 Blue-Coder.com. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <authorUrl>https://Blue-Coder.com</authorUrl>
+    <version>1.17.0</version>
+    <description>MOD_JFILTERS_FILTERS_XML_DESCRIPTION</description>
+    <namespace path="src">Bluecoder\Module\JfiltersFilters</namespace>
+    <files>
+        <filename module="mod_jfilters_filters">mod_jfilters_filters.php</filename>
+        <folder>src</folder>
+        <folder>tmpl</folder>
+    </files>
+    <media destination="mod_jfilters_filters" folder="media">
+        <folder>css</folder>
+        <folder>images</folder>
+        <folder>js</folder>
+        <filename>joomla.asset.json</filename>
+    </media>
+    <languages folder="language">
+        <language tag="en-GB">en-GB/mod_jfilters_filters.ini</language>
+        <language tag="en-GB">en-GB/mod_jfilters_filters.sys.ini</language>
+    </languages>
+    <config>
+        <fields name="params">
+            <fieldset name="basic" addfieldprefix="Bluecoder\Component\Jfilters\Administrator\Field">
+                <field
+                        name="filters_selection"
+                        type="list"
+                        label="MOD_JFILTERS_FILTERS_SELECTION_LABEL"
+                        default="all"
+                        filter="cmd"
+                >
+                    <option value="all">MOD_JFILTERS_FILTERS_SELECTION_ALL</option>
+                    <option value="select">MOD_JFILTERS_FILTERS_SELECTION_SELECT</option>
+                    <option value="exclude">MOD_JFILTERS_FILTERS_SELECTION_EXCLUDE</option>
+                </field>
+
+                <field
+                        name="filters"
+                        type="filters"
+                        label="MOD_JFILTERS_SELECTED_FILTERS_LABEL"
+                        multiple="true"
+                        layout="joomla.form.field.groupedlist-fancy-select"
+                        showon="filters_selection!:all"
+                />
+
+                <field
+                        name="ajax_mode"
+                        type="jfilterslist"
+                        label="MOD_JFILTERS_AJAX_MODE_LABEL"
+                        layout="joomla.form.field.radio.switcher"
+                        data-edition="100"
+                        default="0"
+                >
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+
+                <field
+                        name="submit_filters_using_button"
+                        type="jfilterslist"
+                        label="MOD_JFILTERS_SUBMIT_FILTERS_USING_BUTTON_LABEL"
+                        layout="joomla.form.field.radio.switcher"
+                        data-edition="100"
+                        default="0"
+                >
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+
+                <field
+                        name="use_smart_search"
+                        type="radio"
+                        label="MOD_JFILTERS_REFINE_FILTERS_AFTER_SEARCH_LABEL"
+                        description="MOD_JFILTERS_REFINE_FILTERS_AFTER_SEARCH_DESC"
+                        layout="joomla.form.field.radio.switcher"
+                        default="1"
+                >
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+
+                <field
+                        name="Itemid"
+                        type="menuitem"
+                        component="com_jfilters"
+                        label="MOD_JFILTERS_SETITEMID_LABEL"
+                        default="0"
+                        filter="integer"
+                >
+                    <option value="">JOPTION_SELECT_MENU_ITEM</option>
+                </field>
+
+            </fieldset>
+            <fieldset name="advanced">
+                <field
+                        name="header_html_element"
+                        type="list"
+                        label="MOD_JFILTERS_FILTERS_HEADER_HTML_ELEMENT_LABEL"
+                        default="h4"
+                        filter="cmd"
+                >
+                    <option value="h2">h2</option>
+                    <option value="h3">h3</option>
+                    <option value="h4">h4</option>
+                    <option value="h5">h5</option>
+                    <option value="h6">h6</option>
+                    <option value="div">div</option>
+                </field>
+
+                <field
+                        name="layout"
+                        type="modulelayout"
+                        label="JFIELD_ALT_LAYOUT_LABEL"
+                        class="custom-select"
+                />
+
+                <field
+                        name="moduleclass_sfx"
+                        type="textarea"
+                        label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+                        rows="3"
+                        default=""
+                />
+            </fieldset>
+        </fields>
+    </config>
+</extension>

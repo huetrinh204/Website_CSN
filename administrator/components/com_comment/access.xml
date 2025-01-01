@@ -1,0 +1,15 @@
+<access component="com_comment">
+    <section name="component">
+        <action name="core.admin" title="JACTION_ADMIN" description="JACTION_ADMIN_COMPONENT_DESC" />
+        <action name="core.manage" title="JACTION_MANAGE" description="JACTION_MANAGE_COMPONENT_DESC" />
+        <action name="core.edit" title="JACTION_EDIT" description="JACTION_EDIT_COMPONENT_DESC" />
+        <action name="core.edit.state" title="JACTION_EDITSTATE" description="JACTION_EDITSTATE_COMPONENT_DESC" />
+
+        <action name="core.multimedia.create" title="LIB_COMPOJOOM_CREATE_MULTIMEDIA"
+                description="LIB_COMPOJOOM_CREATE_MULTIMEDIA_DESC"/>
+        <action name="core.multimedia.delete" title="LIB_COMPOJOOM_DELETE_MULTIMEDIA"
+                description="LIB_COMPOJOOM_DELETE_MULTIMEDIA_DESC"/>
+        <action name="core.multimedia.delete.own" title="LIB_COMPOJOOM_DELETE_OWN_MULTIMEDIA"
+                description="LIB_COMPOJOOM_DELETE_OWN_MULTIMEDIA_DESC"/>
+    </section>
+</access>

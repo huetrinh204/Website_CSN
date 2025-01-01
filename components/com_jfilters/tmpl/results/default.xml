@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+    <layout title="COM_JFILTERS_RESULTS_VIEW_DEFAULT_TITLE">
+        <message>
+            <![CDATA[COM_JFILTERS_RESULTS_VIEW_DEFAULT_DESC]]>
+        </message>
+    </layout>
+
+    <!-- Add fields to the request variables for the layout. -->
+    <fields name="request">
+        <fieldset name="request"
+                  addfieldprefix="Bluecoder\Component\Jfilters\Administrator\Field">
+        >
+
+        </fieldset>
+    </fields>
+
+    <!-- Add primary filter id to the request variables for the layout. -->
+    <fields name="params">
+        <fieldset name="basic"
+                  addfieldprefix="Bluecoder\Component\Jfilters\Administrator\Field">
+
+            <field
+                    name="contextType"
+                    type="context"
+                    label="COM_JFILTERS_FIELD_CONTEXT_LABEL"
+                    description="COM_JFILTERS_FIELD_CONTEXT_DESC"
+                    required="true"
+            />
+
+            <field
+                    name="selected_filters"
+                    type="filtersModalButton"
+                    label="COM_JFILTERS_PRESET_FILTERS_LABEL"
+                    clear="true"
+            />
+
+            <field
+                    name="primary_filtr"
+                    type="filters"
+                    label="COM_JFILTERS_PRIMARY_FILTER_LABEL"
+                    description="COM_JFILTERS_PRIMARY_FILTER_DESC"
+                    default="0"
+                    filter="integer"
+            >
+                <option value="0">JNONE</option>
+            </field>
+
+            <field
+                    name="show_sort_order"
+                    type="radio"
+                    label="COM_JFILTERS_SHOW_SORT_FIELDS_LABEL"
+                    layout="joomla.form.field.radio.switcher"
+                    default="0"
+            >
+                <option value="0">JHIDE</option>
+                <option value="1">JSHOW</option>
+            </field>
+
+            <field
+                    name="sorting_rules"
+                    type="subform"
+                    label="COM_JFILTERS_SORTING_RULES_LABEL"
+                    layout="joomla.form.field.subform.repeatable"
+                    icon="list"
+                    multiple="true"
+            >
+                <form hidden="true" name="list_sorting_rules" repeat="true">
+                    <field
+                            name="sortField"
+                            type="filters"
+                            data-includeTreeFilters="false"
+                            data-dynamicallyAddedOptionsEdition="100"
+                            label="COM_JFILTERS_CONFIG_SORT_FIELD_LABEL"
+                            layout="joomla.form.field.groupedlist-fancy-select"
+                            multiple="false"
+                            required="true"
+                    >
+                        <group label="COM_JFILTERS_PLAIN_FIELDS_LABEL">
+                            <!-- value= table.column. `l` is the alias of table `#__finder_links`. {context} will be replaced by the context table.
+                            Make sure that there are no duplicate fields (wither with different tale prefix). Since we use the 2nd part (field name) in the urls. -->
+                            <option value="relevance">COM_JFILTERS_CONFIG_SORT_OPTION_RELEVANCE</option>
+                            <option value="l.title">JGLOBAL_TITLE</option>
+                            <option value="l.start_date">JGLOBAL_CREATED_DATE</option>
+                            <option value="{context}.modified_date">JGLOBAL_MODIFIED_DATE</option>
+                            <option value="{context}.publish_start_date">JGLOBAL_FIELD_PUBLISH_UP_LABEL</option>
+                            <option value="{context}.ordering">COM_JFILTERS_CONFIG_SORT_OPTION_ITEM_ORDER</option>
+                            <option value="l.list_price">COM_JFILTERS_CONFIG_SORT_OPTION_LIST_PRICE</option>
+                        </group>
+                    </field>
+
+                    <field
+                            name="sortDirection"
+                            type="list"
+                            label="COM_JFILTERS_FIELD_OPTIONS_SORT_DIRECTION_OPTION_LABEL"
+                            required="true"
+                    >
+                            <option value="asc">JGLOBAL_ORDER_ASCENDING</option>
+                            <option value="desc">JGLOBAL_ORDER_DESCENDING</option>
+                    </field>
+
+                    <field
+                            name="useOnSearch"
+                            type="radio"
+                            label="COM_JFILTERS_FIELD_USE_ON_SEARCH_LABEL"
+                            filter="integer"
+                            validate="options"
+                            default="1"
+                    >
+                        <option value="0">JNO</option>
+                        <option value="1">JYES</option>
+                    </field>
+
+                    <field
+                            name="useOnFiltering"
+                            type="radio"
+                            label="COM_JFILTERS_FIELD_USE_ON_FILTERING_LABEL"
+                            filter="integer"
+                            validate="options"
+                            default="1"
+                            showon="sortField!:relevance"
+                    >
+                        <option value="0">JNO</option>
+                        <option value="1">JYES</option>
+                    </field>
+
+                    <field type="spacer" label="COM_JFILTERS_APPLY_WHEN" class="fs-3"/>
+                    <field
+                            name="conditionOperator"
+                            type="list"
+                            label="COM_JFILTERS_PAGE_FILTERS_LABEL"
+                            default="contain"
+                            required="true"
+                    >
+                        <option value="contain">COM_JFILTERS_RESULTS_CONTAIN</option>
+                        <option value="notContain">COM_JFILTERS_RESULTS_NOT_CONTAIN</option>
+                    </field>
+
+                    <field
+                            name="conditionFilters"
+                            type="filtersModalButton"
+                            label="COM_JFILTERS_FILTERS_LABEL"
+                            hint="JALL"
+                            clear="true"
+                    />
+                </form>
+            </field>
+
+        </fieldset>
+
+        <fieldset name="RESULTS_DISPLAY">
+            <field
+                    name="show_taxonomy"
+                    type="list"
+                    label="COM_JFILTERS_CONFIG_SHOW_TAXONOMY_LABEL"
+                    default=""
+                    useglobal="true"
+                    class="form-select-color-state"
+                    validate="options"
+            >
+                <option value="1">JSHOW</option>
+                <option value="0">JHIDE</option>
+            </field>
+            <field
+                    name="show_description"
+                    type="list"
+                    label="COM_JFILTERS_CONFIG_SHOW_DESCRIPTION_LABEL"
+                    default=""
+                    useglobal="true"
+                    class="form-select-color-state"
+                    validate="options"
+            >
+                <option value="1">JSHOW</option>
+                <option value="0">JHIDE</option>
+            </field>
+            <field
+                    name="description_length"
+                    type="number"
+                    label="COM_JFILTERS_CONFIG_DESCRIPTION_LENGTH_LABEL"
+                    filter="integer"
+                    default=""
+                    size="5"
+                    useglobal="true"
+            />
+            <field
+                    name="show_image"
+                    type="list"
+                    label="COM_JFILTERS_CONFIG_SHOW_IMAGE_LABEL"
+                    description="COM_JFILTERS_CONFIG_SHOW_IMAGE_DESC"
+                    default=""
+                    useglobal="true"
+                    class="form-select-color-state"
+                    validate="options"
+            >
+                <option value="1">JSHOW</option>
+                <option value="0">JHIDE</option>
+            </field>
+            <field
+                    name="image_class"
+                    type="text"
+                    label="COM_JFILTERS_CONFIG_IMAGE_CLASS_LABEL"
+                    default=""
+                    useglobal="true"
+                    validate="CssIdentifier"
+                    showon="show_image!:0"
+            />
+            <field
+                    name="link_image"
+                    type="list"
+                    label="COM_JFILTERS_CONFIG_LINKED_IMAGE_LABEL"
+                    default=""
+                    useglobal="true"
+                    class="form-select-color-state"
+                    validate="options"
+                    showon="show_image!:0"
+            >
+                <option value="0">JNO</option>
+                <option value="1">JYES</option>
+            </field>
+            <field
+                    name="show_date"
+                    type="list"
+                    label="COM_JFILTERS_CONFIG_SHOW_DATE_LABEL"
+                    default=""
+                    useglobal="true"
+                    class="form-select-color-state"
+                    validate="options"
+            >
+                <option value="1">JSHOW</option>
+                <option value="0">JHIDE</option>
+            </field>
+            <field
+                    name="show_url"
+                    type="list"
+                    label="COM_JFILTERS_CONFIG_SHOW_URL_LABEL"
+                    default=""
+                    useglobal="true"
+                    class="form-select-color-state"
+                    validate="options"
+            >
+                <option value="1">JSHOW</option>
+                <option value="0">JHIDE</option>
+            </field>
+
+        </fieldset>
+
+        <fieldset name="advanced">
+            <field
+                    name="show_pagination_limit"
+                    type="list"
+                    label="JGLOBAL_DISPLAY_SELECT_LABEL"
+                    validate="options"
+                    class="custom-select-color-state"
+            >
+                <option value="">JGLOBAL_USE_GLOBAL</option>
+                <option value="0">JHIDE</option>
+                <option value="1">JSHOW</option>
+            </field>
+            <field
+                    name="show_pagination"
+                    type="list"
+                    label="JGLOBAL_PAGINATION_LABEL"
+                    validate="options"
+                    class="custom-select-color-state"
+            >
+                <option value="">JGLOBAL_USE_GLOBAL</option>
+                <option value="0">JHIDE</option>
+                <option value="1">JSHOW</option>
+                <option value="2">JGLOBAL_AUTO</option>
+            </field>
+            <field
+                    name="show_pagination_results"
+                    type="list"
+                    label="JGLOBAL_PAGINATION_RESULTS_LABEL"
+                    validate="options"
+                    class="custom-select-color-state"
+            >
+                <option value="">JGLOBAL_USE_GLOBAL</option>
+                <option value="0">JHIDE</option>
+                <option value="1">JSHOW</option>
+            </field>
+            <field
+                    name="list_limit"
+                    type="list"
+                    label="JGLOBAL_LIST_LIMIT"
+                    default="20"
+                    validate="options"
+            >
+                <option value="5">J5</option>
+                <option value="10">J10</option>
+                <option value="15">J15</option>
+                <option value="20">J20</option>
+                <option value="25">J25</option>
+                <option value="30">J30</option>
+                <option value="50">J50</option>
+                <option value="100">J100</option>
+                <option value="0">JALL</option>
+            </field>
+        </fieldset>
+    </fields>
+</metadata>

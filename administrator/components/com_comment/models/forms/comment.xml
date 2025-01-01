@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset>
+		<field name="id" type="text" label="JGLOBAL_FIELD_ID_LABEL"
+		       description="JGLOBAL_FIELD_ID_DESC" size="10" default="0"
+		       labelclass="col-sm-2 compojoom-control-label"
+		       class="form-control readonly"
+		       filter="integer"
+		       readonly="true"/>
+
+		<field name="contentid" type="contentid" class="form-control readonly" label="COM_COMMENT_CONTENT_ID_LABEL"
+		       description="COM_COMMENT_CONTENT_ID_DESC"
+		       default="0"
+		       labelclass="col-sm-2 compojoom-control-label"
+		       required="true"
+		       filter="integer"
+				/>
+
+		<field name="component" type="ccommentplugins"
+		       label="COM_COMMENT_COMPONENT_FIELD_LABEL"
+		       description="COM_COMMENT_COMPONENT_FIELD_DESC"
+		       filter="string"
+		       labelclass="col-sm-2 compojoom-control-label"
+		       class="form-control" />
+
+		<field name="ip" type="text"
+		       label="COM_COMMENT_IP_LABEL" description="COM_COMMENT_COMPONENT_LABEL_DESC"
+		       filter="string"
+		       class="form-control" size="20"  labelclass="col-sm-2 compojoom-control-label"/>
+
+		<field name="userid" type="user"
+		       label="COM_CONTENT_FIELD_CREATED_BY_LABEL"
+		       description="COM_CONTENT_FIELD_CREATED_BY_DESC"
+		       filter="integer"
+		       labelclass="col-sm-2 compojoom-control-label"
+		       class="form-control"/>
+
+		<field name="date" type="calendar" label="COM_COMMENT_FIELD_CREATED_LABEL"
+		       description="COM_COMMENT_FIELD_CREATED_DESC" class="form-control" size="22"
+		       format="%Y-%m-%d %H:%M:%S" filter="user_utc" labelclass="col-sm-2 compojoom-control-label"/>
+
+		<field name="name" type="text"
+		       label="COM_COMMENT_NAME_FIELD_LABEL" description="COM_COMMENT_NAME_FIELD_LABEL_DESC"
+		       filter="string"
+		       class="form-control" size="20" labelclass="col-sm-2 compojoom-control-label"/>
+
+		<field
+				name="email"
+				type="email"
+				label="COM_COMMENT_EMAIL_FIELD_LABEL"
+				description="COM_COMMENT_EMAIL_FIELD_DESC"
+				filter="email"
+				size="30"
+				validate="email"
+				labelclass="col-sm-2 compojoom-control-label"
+				class="form-control"
+			/>
+
+		<field name="notify" type="list" label="COM_COMMENT_FIELD_NOTIFY_LABEL"
+		       description="COM_COMMENT_FIELD_NOTIFY_DESC" default="0"
+		       labelclass="col-sm-2 compojoom-control-label"
+		       class="form-control"
+		       filter="integer">
+			<option value="1">
+				JYES
+			</option>
+			<option value="0">
+				JNO
+			</option>
+		</field>
+
+		<field name="comment" type="textarea" class="form-control"
+		       label="COM_COMMENT_FIELD_COMMENT_LABEL"
+		       description="COM_COMMENT_FIELD_COMMENT_DESC"
+		       filter="raw" required="true" />
+
+		<field name="published" type="list" label="JSTATUS"
+		       description="JFIELD_PUBLISHED_DESC"
+		       class="form-control"
+		       labelclass="col-sm-2 compojoom-control-label"
+		       filter="intval" size="1" default="1"
+				>
+			<option value="1">
+				JPUBLISHED
+			</option>
+			<option value="0">
+				JUNPUBLISHED
+			</option>
+		</field>
+
+		<field name="voting_yes" type="text" label="COM_COMMENT_FIELD_VOTING_YES_LABEL"
+		       description="COM_COMMENT_FIELD_VOTING_YES_DESC" size="10" default="0"
+		       labelclass="col-sm-2 compojoom-control-label"
+		       class="form-control"
+		       filter="integer"
+				/>
+
+		<field name="voting_no" type="text" label="COM_COMMENT_FIELD_VOTING_NO_LABEL"
+		       description="COM_COMMENT_FIELD_VOTING_NO_DESC" size="10" default="0"
+		       labelclass="col-sm-2 compojoom-control-label"
+		       class="form-control"
+		       filter="integer"
+				/>
+
+		<field name="parentid" type="text" label="COM_COMMENT_FIELD_PARENT_ID_LABEL"
+		       description="COM_COMMENT_FIELD_PARENT_ID_LABEL" size="10" default="0"
+		       filter="integer"
+		       class="form-control"
+		       labelclass="col-sm-2 compojoom-control-label"
+				/>
+
+		<field name="unsubscribe_hash" type="text" label="COM_COMMENT_FIELD_UNPUBLISH_HASH_LABEL"
+		       labelclass="col-sm-2 compojoom-control-label"
+		       description="COM_COMMENT_FIELD_UNPUBLISH_HASH_DESC" default="0"
+				/>
+		<field name="moderate_hash" type="text" label="COM_COMMENT_FIELD_MODERATOR_HASH_LABEL"
+		       labelclass="col-sm-2 compojoom-control-label"
+		       description="COM_COMMENT_FIELD_MODERATOR_HASH_DESC" default="0"
+				/>
+
+		<field name="customfields"
+		/>
+	</fieldset>
+</form>

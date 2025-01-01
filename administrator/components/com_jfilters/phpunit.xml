@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+        bootstrap="src/Test/Unit/bootstrap.php"
+        beStrictAboutTestsThatDoNotTestAnything="true"
+        beStrictAboutOutputDuringTests="true"
+        colors="true"
+>
+    <testsuites>
+        <testsuite name="JFiltersUnit">
+            <directory>src/Test/Unit</directory>
+        </testsuite>
+        <testsuite name="JFilterIntegration">
+            <directory>src/Test/Integration</directory>
+        </testsuite>
+    </testsuites>
+
+    <php>
+        <const name="JTEST_DB_ENGINE" value="mysqli" />
+        <const name="JTEST_DB_HOST" value="mysql" />
+        <const name="JTEST_DB_NAME" value="jfTest" />
+        <const name="JTEST_DB_TABLE_PREFIX" value="jos_" />
+        <const name="JTEST_DB_USER" value="docker" />
+        <const name="JTEST_DB_PASSWORD" value="docker" />
+    </php>
+
+</phpunit>

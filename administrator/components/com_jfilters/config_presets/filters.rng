@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar ns="urn:jfilters:filters" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <start>
+        <element name="filters">
+            <attribute name="xsi:schemaLocation"/>
+            <oneOrMore>
+                <element name="filter">
+                    <attribute name="dynamic">
+                        <data type="boolean"/>
+                    </attribute>
+                    <attribute name="label">
+                        <data type="NCName"/>
+                    </attribute>
+                    <attribute name="name"/>
+                    <attribute name="root">
+                        <data type="boolean"/>
+                    </attribute>
+                    <element name="definition">
+                        <optional>
+                            <attribute name="class"/>
+                        </optional>
+                        <optional>
+                            <attribute name="dbTable"/>
+                        </optional>
+                        <element name="id">
+                            <optional>
+                                <attribute name="dbColumn">
+                                    <data type="NCName"/>
+                                </attribute>
+                            </optional>
+                            <text/>
+                        </element>
+                        <element name="title">
+                            <optional>
+                                <attribute name="dbColumn">
+                                    <data type="NCName"/>
+                                </attribute>
+                            </optional>
+                            <text/>
+                        </element>
+                        <optional>
+                            <element name="type">
+                                <attribute name="dbColumn">
+                                    <data type="NCName"/>
+                                </attribute>
+                                <optional>
+                                    <attribute name="excluded">
+                                        <data type="NCName"/>
+                                    </attribute>
+                                </optional>
+                                <optional>
+                                    <attribute name="included">
+                                        <data type="NCName"/>
+                                    </attribute>
+                                </optional>
+                            </element>
+                            <element name="params">
+                                <attribute name="dbColumn">
+                                    <data type="NCName"/>
+                                </attribute>
+                            </element>
+                        </optional>
+                        <element name="context">
+                            <optional>
+                                <attribute name="dbColumn">
+                                    <data type="NCName"/>
+                                </attribute>
+                            </optional>
+                            <text/>
+                        </element>
+                        <optional>
+                            <element name="condition">
+                                <attribute name="dbColumn">
+                                    <data type="NCName"/>
+                                </attribute>
+                                <data type="integer"/>
+                            </element>
+                        </optional>
+                        <optional>
+                            <ref name="language"/>
+                        </optional>
+                    </element>
+                    <ref name="value"/>
+                    <element name="valueRefItem">
+                        <attribute name="dbTable"/>
+                        <element name="itemId">
+                            <attribute name="dbColumn">
+                                <data type="NCName"/>
+                            </attribute>
+                            <optional>
+                                <attribute name="reference"/>
+                            </optional>
+                        </element>
+                        <element name="valueId">
+                            <attribute name="dbColumn">
+                                <data type="NCName"/>
+                            </attribute>
+                            <optional>
+                                <attribute name="reference"/>
+                            </optional>
+                        </element>
+                        <optional>
+                            <element name="typeId">
+                                <attribute name="dbColumn">
+                                    <data type="NCName"/>
+                                </attribute>
+                            </element>
+                        </optional>
+                    </element>
+                </element>
+            </oneOrMore>
+        </element>
+    </start>
+    <define name="language">
+        <element name="language">
+            <optional>
+                <attribute name="dbColumn">
+                    <data type="NCName"/>
+                </attribute>
+            </optional>
+            <text/>
+        </element>
+    </define>
+    <define name="value">
+        <element name="value">
+            <optional>
+                <attribute name="class"/>
+            </optional>
+            <optional>
+                <attribute name="dbColumn">
+                    <data type="NCName"/>
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="dbTable"/>
+            </optional>
+            <optional>
+                <attribute name="tree">
+                    <data type="boolean"/>
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="type">
+                    <data type="NCName"/>
+                </attribute>
+            </optional>
+            <optional>
+                <ref name="value"/>
+            </optional>
+            <optional>
+                <element name="label">
+                    <attribute name="dbColumn">
+                        <data type="NCName"/>
+                    </attribute>
+                    <optional>
+                        <attribute name="translate">
+                            <data type="boolean"/>
+                        </attribute>
+                    </optional>
+                </element>
+            </optional>
+            <optional>
+                <element name="parentId">
+                    <attribute name="dbColumn">
+                        <data type="NCName"/>
+                    </attribute>
+                    <attribute name="reference"/>
+                </element>
+            </optional>
+            <optional>
+                <element name="alias">
+                    <attribute name="dbColumn">
+                        <data type="NCName"/>
+                    </attribute>
+                </element>
+                <element name="parentValueId">
+                    <attribute name="dbColumn">
+                        <data type="NCName"/>
+                    </attribute>
+                </element>
+                <element name="lft">
+                    <attribute name="dbColumn">
+                        <data type="NCName"/>
+                    </attribute>
+                </element>
+                <element name="rgt">
+                    <attribute name="dbColumn">
+                        <data type="NCName"/>
+                    </attribute>
+                </element>
+                <element name="extension">
+                    <optional>
+                        <attribute name="dbColumn">
+                            <data type="NCName"/>
+                        </attribute>
+                    </optional>
+                    <text/>
+                </element>
+                <element name="state">
+                    <attribute name="dbColumn">
+                        <data type="NCName"/>
+                    </attribute>
+                </element>
+            </optional>
+            <optional>
+                <ref name="language"/>
+            </optional>
+            <optional>
+                <element name="metadescription">
+                    <attribute name="dbColumn">
+                        <data type="NCName"/>
+                    </attribute>
+                </element>
+                <element name="metakeywords">
+                    <attribute name="dbColumn">
+                        <data type="NCName"/>
+                    </attribute>
+                </element>
+                <element name="requests">
+                    <oneOrMore>
+                        <element name="request">
+                            <attribute name="extension">
+                                <data type="NCName"/>
+                            </attribute>
+                            <attribute name="view">
+                                <data type="NCName"/>
+                            </attribute>
+                            <data type="NCName"/>
+                        </element>
+                    </oneOrMore>
+                </element>
+            </optional>
+        </element>
+    </define>
+</grammar>

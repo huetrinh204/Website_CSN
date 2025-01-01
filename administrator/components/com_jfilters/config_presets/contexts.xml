@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+   Copyright © Blue-coder.com, All rights reserved.
+
+   The contexts represent the type of items that will be returned as results.
+   Add a new context for each new type of items you want to get as results (e.g. items of a component).
+   Do note: The context's name attribute, should match the filter definition context's value (either coming from database (e.g. #__fields) or explicitly declared)
+   and the context as used in the finder plugins.
+   -->
+<contexts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns="urn:jfilters:contexts"
+          xsi:schemaLocation="urn:jfilters:contexts contexts.rng">
+    <!--
+    name : The context name as used by finder and joomla in general.
+    alias : Should be used the 1 used in the `#__finder_types` table, for that type.
+    typeId : The type_id (if exist) as declared in the `#__content_types` table.
+    -->
+    <context name="com_content.article" alias="Article" typeId="1">
+        <item dbTable="#__content">
+            <!--The id of the item (should be unique) -->
+            <id dbColumn="id"/>
+            <!--The title of the item -->
+            <title dbColumn="title"/>
+            <!--The description-->
+            <desciption dbColumn="introtext"/>
+            <!--The state of the item -->
+            <state dbColumn="state"/>
+            <!--The access of the item -->
+            <access dbColumn="access"/>
+            <!--The language of the item -->
+            <language dbColumn="language"/>
+
+            <!--The ordering of the item -->
+            <ordering dbColumn="ordering"/>
+            <modified_date dbColumn="modified"/>
+            <publish_start_date dbColumn="publish_up"/>
+            <publish_end_date dbColumn="publish_down"/>
+        </item>
+    </context>
+
+    <context name="com_contact.contact" alias="Contact" typeId="2">
+        <item dbTable="#__contact_details">
+            <id dbColumn="id"/>
+            <title dbColumn="name"/>
+            <state dbColumn="published"/>
+            <access dbColumn="access"/>
+            <language dbColumn="language"/>
+            <ordering dbColumn="ordering"/>
+            <modified_date dbColumn="modified"/>
+            <publish_start_date dbColumn="publish_up"/>
+            <publish_end_date dbColumn="publish_down"/>
+        </item>
+    </context>
+</contexts>

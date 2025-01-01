@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+   The contexts represent the type of items that will be returned as results.
+   Add a new context for each new type of items you want to get as results (e.g. items of a component).
+   Do note: The context's name attribute, should match the filter definition context's value (either coming from database (e.g. #__fields) or explicitly declared)
+   and the context as used in the finder plugins.
+   -->
+<contexts>
+    <context name="com_content.article" alias="Articles">
+        <item dbTable="#__content">
+            <!--The id of the item (should be unique) -->
+            <id dbColumn="id"/>
+            <!--The title of the item -->
+            <title dbColumn="title"/>
+            <!--The description-->
+            <desciption dbColumn="introtext"/>
+            <!--The state of the item -->
+            <state dbColumn="state"/>
+            <!--The access of the item -->
+            <access dbColumn="access"/>
+            <!--The language of the item -->
+            <language dbColumn="language"/>
+
+            <ordering dbColumn="ordering"/>
+            <publish_start_date dbColumn="publish_up"/>
+            <publish_end_date dbColumn="publish_down"/>
+            <start_date dbColumn="publish_up"/>
+            <end_date dbColumn="publish_down"/>
+        </item>
+    </context>
+</contexts>

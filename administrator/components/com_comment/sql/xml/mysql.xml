@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema>
+    <!-- Metadata -->
+    <meta>
+        <!-- Supported driver types -->
+        <drivers>
+            <driver>mysql</driver>
+            <driver>mysqli</driver>
+			<driver>pdomysql</driver>
+        </drivers>
+    </meta>
+
+    <!-- SQL commands to run on installation and update -->
+    <sql>
+        <action table="#__comment" canfail="0">
+            <condition type="missing" value="" />
+            <query><![CDATA[
+CREATE TABLE IF NOT EXISTS `#__comment` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `contentid` int(10) NOT NULL DEFAULT '0',
+  `component` varchar(50) NOT NULL DEFAULT '',
+  `ip` varchar(45) NOT NULL DEFAULT '',
+  `userid` int(10) unsigned NOT NULL DEFAULT '0',
+  `modified_by` int(10) unsigned NOT NULL DEFAULT '0',
+  `date` datetime NULL,
+  `modified` datetime NULL,
+  `name` varchar(30) NOT NULL DEFAULT '',
+  `email` varchar(50) NOT NULL DEFAULT '',
+  `website` varchar(100) NOT NULL DEFAULT '',
+  `notify` tinyint(1) NOT NULL DEFAULT '0',
+  `title` varchar(50) NOT NULL DEFAULT '',
+  `comment` text NOT NULL,
+  `published` tinyint(1) NOT NULL DEFAULT '0',
+  `deleted` tinyint(1) NOT NULL DEFAULT '0',
+  `spam` tinyint(1) NOT NULL DEFAULT '0',
+  `voting_yes` int(10) NOT NULL DEFAULT '0',
+  `voting_no` int(10) NOT NULL DEFAULT '0',
+  `parentid` int(10) NOT NULL DEFAULT '-1',
+  `importtable` varchar(30) NOT NULL DEFAULT '',
+  `importid` bigint(10) NOT NULL DEFAULT '0',
+  `importparentid` bigint(10) NOT NULL DEFAULT '-1',
+  `unsubscribe_hash` VARCHAR( 255 ) NOT NULL ,
+  `moderate_hash` VARCHAR( 255 ) NOT NULL,
+  `customfields` text,
+  PRIMARY KEY (`id`),
+  KEY `com_contentid` (`component`,`contentid`)
+) DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci;
+            ]]></query>
+        </action>
+
+        <action table="#__comment_captcha" canfail="0">
+            <condition type="missing" value="" />
+            <query><![CDATA[
+CREATE TABLE IF NOT EXISTS `#__comment_captcha` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `insertdate` datetime NULL,
+  `referenceid` varchar(100) NOT NULL DEFAULT '',
+  `hiddentext` varchar(100) NOT NULL DEFAULT '',
+  PRIMARY KEY (`ID`)
+) DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci;
+            ]]></query>
+        </action>
+
+        <action table="#__comment_setting" canfail="0">
+            <condition type="missing" value="" />
+            <query><![CDATA[
+CREATE TABLE IF NOT EXISTS `#__comment_setting` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `note` varchar(50) NOT NULL DEFAULT '',
+  `component` varchar(50) NOT NULL DEFAULT '',
+  `params` text NOT NULL,
+  PRIMARY KEY (`id`)
+) DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci;
+            ]]></query>
+        </action>
+
+	    <action table="#__comment_voting" canfail="0">
+		    <condition type="missing" value="" />
+		    <query><![CDATA[
+CREATE TABLE IF NOT EXISTS `#__comment_voting` (
+  `id` int(10) NOT NULL DEFAULT '0',
+  `ip` varchar(45) NOT NULL DEFAULT '',
+  `time` int(11) NOT NULL DEFAULT '0',
+  `current_vote` int(2) DEFAULT NULL
+) DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci;
+            ]]></query>
+	    </action>
+
+	    <action table="#__comment_queue" canfail="0">
+		    <condition type="missing" value="" />
+		    <query><![CDATA[
+CREATE TABLE IF NOT EXISTS `#__comment_queue` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `mailfrom` varchar(255) DEFAULT NULL,
+  `fromname` varchar(255) DEFAULT NULL,
+  `recipient` varchar(255) NOT NULL,
+  `subject` text NOT NULL,
+  `body` text NOT NULL,
+  `created` datetime NOT NULL,
+  `type` varchar(10) NOT NULL DEFAULT 'html',
+  `status` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `status` (`status`)
+) DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci;
+            ]]></query>
+	    </action>
+
+	    <action table="#__comment_version">
+		    <condition type="missing" operator="not"/>
+		    <query><![CDATA[
+DROP TABLE IF EXISTS `#__comment_version`;
+            ]]></query>
+	    </action>
+
+	    <action table="#__comment_installer">
+		    <condition type="missing" operator="not"/>
+		    <query><![CDATA[
+DROP TABLE IF EXISTS `#__comment_installer`;
+            ]]></query>
+	    </action>
+
+	    <action table="#__comment_setting" canfail="1">
+		    <condition type="missing" value="set_sectionid" operator="not"/>
+		    <query><![CDATA[
+ALTER TABLE #__comment_setting  DROP `set_sectionid`;
+            ]]></query>
+	    </action>
+
+	    <action table="#__comment_setting" canfail="1">
+		    <condition type="missing" value="set_name" operator="not"/>
+		    <query><![CDATA[
+ALTER TABLE `#__comment_setting`  CHANGE `set_name` `note` varchar(255) NOT NULL DEFAULT "";
+            ]]></query>
+	    </action>
+
+	    <action table="#__comment_setting" canfail="1">
+		    <condition type="missing" value="set_component" operator="not"/>
+		    <query><![CDATA[
+ALTER TABLE `#__comment_setting`  CHANGE `set_component` `component` varchar(50) NOT NULL DEFAULT "";
+            ]]></query>
+	    </action>
+
+	    <action table="#__comment" canfail="1">
+		    <condition type="missing" value="usertype" operator="not"/>
+		    <query><![CDATA[
+ALTER TABLE `#__comment` DROP `usertype`;
+            ]]></query>
+	    </action>
+
+	    <action table="#__comment" canfail="1">
+		    <condition type="missing" value="modified_by" />
+		    <query><![CDATA[
+ALTER TABLE `#__comment`
+
+        ADD modified_by  int(10) unsigned NOT NULL DEFAULT '0',
+	    ADD modified  datetime NULL,
+	    ADD unsubscribe_hash  VARCHAR( 255 ) NOT NULL ,
+	    ADD moderate_hash  VARCHAR( 255 ) NOT NULL,
+	    ADD deleted  tinyint(1) NOT NULL DEFAULT '0',
+	    ADD spam  tinyint(1) NOT NULL DEFAULT '0';
+            ]]></query>
+	    </action>
+
+        <action table="#__comment" canfail="1">
+            <condition type="missing" value="customfields" />
+            <query><![CDATA[
+ALTER TABLE `#__comment` ADD `customfields` text;
+            ]]></query>
+        </action>
+
+		<action table="#__comment_voting" canfail="0">
+			<condition type="missing" value="current_vote" />
+			<query><![CDATA[
+ALTER TABLE `#__comment_voting`
+  ADD `current_vote` int(2) DEFAULT NULL;
+            ]]></query>
+		</action>
+
+		<action table="#__comment" canfail="0">
+			<condition type="type" coltype="text" value="customfields"  operator="not" default="NULL" null="yes"/>
+
+			<query><![CDATA[
+ALTER TABLE `#__comment` CHANGE `customfields` `customfields` text;
+            ]]></query>
+		</action>
+
+		<action table="#__comment" canfail="0">
+			<condition type="type" coltype="datetime" value="date"  operator="not" default="NULL"/>
+
+			<query><![CDATA[
+ALTER TABLE `#__comment` CHANGE `date` `date` datetime NULL;
+            ]]></query>
+			<query><![CDATA[
+UPDATE `#__comment` SET `date` = NULL WHERE `date` = '0000-00-00 00:00:00';
+            ]]></query>
+		</action>
+
+		<action table="#__comment" canfail="0">
+			<condition type="type" coltype="datetime" value="modified"  operator="not" default="NULL"/>
+
+			<query><![CDATA[
+ALTER TABLE `#__comment` CHANGE `modified` `modified` datetime NULL;
+            ]]></query>
+			<query><![CDATA[
+UPDATE `#__comment` SET `modified` = NULL WHERE `modified` = '0000-00-00 00:00:00';
+            ]]></query>
+		</action>
+
+		<action table="#__comment_captcha" canfail="0">
+			<condition type="type" coltype="datetime" value="insertdate"  operator="not" default="NULL"/>
+
+			<query><![CDATA[
+ALTER TABLE `#__comment_captcha` CHANGE `insertdate` `insertdate` datetime NULL;
+            ]]></query>
+			<query><![CDATA[
+UPDATE `#__comment_captcha` SET `insertdate` = NULL WHERE `insertdate` = '0000-00-00 00:00:00';
+            ]]></query>
+		</action>
+    </sql>
+</schema>

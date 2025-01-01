@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" group="finder" method="upgrade">
+    <name>plg_finder_jfiltersindexer</name>
+    <author>Blue-Coder.com</author>
+    <creationDate>2024-03-14</creationDate>
+    <copyright>Copyright (C) 2024 Blue-Coder.com. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <authorUrl>https://Blue-Coder.com</authorUrl>
+    <version>1.0.3</version>
+    <description>PLG_FINDER_JFILTERSINDEXER_XML_DESCRIPTION</description>
+    <files>
+        <filename plugin="jfiltersindexer">jfiltersindexer.php</filename>
+        <folder>sql</folder>
+    </files>
+    <install>
+        <sql>
+            <file driver="mysql" charset="utf8">sql/install.mysql.sql</file>
+        </sql>
+    </install>
+
+    <uninstall> <!-- Runs on uninstall -->
+        <sql>
+            <file driver="mysql" charset="utf8">sql/uninstall.mysql.sql</file>
+        </sql>
+    </uninstall>
+
+    <update> <!-- Runs on update; New in 1.6 -->
+        <schemas>
+            <schemapath type="mysql">sql/updates</schemapath>
+        </schemas>
+    </update>
+    <languages folder="language">
+        <language tag="en-GB">en-GB/plg_finder_jfiltersindexer.sys.ini</language>
+    </languages>
+</extension>

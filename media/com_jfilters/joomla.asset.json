@@ -1,0 +1,76 @@
+{
+  "$schema": "https://developer.joomla.org/schemas/json-schema/web_assets.json",
+  "name": "com_jfilters",
+  "version": "1.0.0",
+  "description": "JFilters is a Filtering extension for Joomla",
+  "license": "GPL-2.0-or-later",
+  "assets": [
+    {
+      "name": "com_jfilters.jfilters",
+      "type": "style",
+      "uri": "com_jfilters/jfilters.min.css"
+    },
+    {
+      "name": "com_jfilters.filters",
+      "type": "script",
+      "uri": "com_jfilters/filters.min.js",
+      "dependencies": [
+        "core"
+      ],
+      "attributes": {
+        "defer": true
+      }
+    },
+    {
+      "name": "com_jfilters.index",
+      "type": "script",
+      "uri": "com_jfilters/index.min.js",
+      "dependencies": [
+        "core"
+      ],
+      "attributes": {
+        "defer": true
+      }
+    },
+    {
+      "name": "com_jfilters.subform.index",
+      "type": "script",
+      "uri": "com_jfilters/subform-index.min.js",
+      "dependencies": [
+        "core"
+      ],
+      "attributes": {
+        "defer": true
+      }
+    },
+    {
+      "name": "com_jfilters.filters-modal",
+      "type": "script",
+      "uri": "com_jfilters/filters-modal.min.js",
+      "dependencies": [
+        "core"
+      ],
+      "attributes": {
+        "type": "module",
+        "defer": true
+      }
+    },
+    {
+      "name": "com_jfilters.menu-item",
+      "type": "script",
+      "uri": "com_jfilters/menu-item.min.js",
+      "dependencies": [
+        "core"
+      ],
+      "attributes": {
+        "type": "module",
+        "defer": true
+      }
+    },
+    {
+      "name": "com_jfilters.index",
+      "type": "style",
+      "uri": "com_jfilters/index.min.css"
+    }
+  ]
+}
